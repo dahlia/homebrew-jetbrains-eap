@@ -17,5 +17,6 @@ jobs:
           phpstorm-eap,
           pycharm-ce-eap,
           rider-eap,
+          rubymine-eap,
           webstorm-eap
         livecheck: true

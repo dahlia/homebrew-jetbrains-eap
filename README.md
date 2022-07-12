@@ -23,4 +23,5 @@ Every cask in this tap ends with `-eap`.
  -  `phpstorm-eap`
  -  `pycharm-ce-eap`
  -  `rider-eap`
+ -  `rubymine-eap`
  -  `webstorm-eap`
