@@ -13,6 +13,9 @@ JetBrains EAP versions][1], here we maintain a separated tap for them.
 Casks
 -----
 
+Every cask in this tap ends with `-eap`.
+
  -  `intellij-idea-ce-eap`
+ -  `phpstorm-eap`
  -  `pycharm-ce-eap`
  -  `rider-eap`

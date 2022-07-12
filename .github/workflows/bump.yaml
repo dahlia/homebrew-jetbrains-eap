@@ -14,6 +14,7 @@ jobs:
         tap: ${{ github.repository_owner }}/jetbrains-eap
         cask: >-
           intellij-idea-ce-eap,
+          phpstorm-eap,
           pycharm-ce-eap,
           rider-eap
         livecheck: true
