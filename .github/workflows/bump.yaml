@@ -1,0 +1,19 @@
+name: bump
+on:
+  schedule:
+  - cron: "0 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  bump:
+    runs-on: macos-latest
+    steps:
+    - uses: macauley/action-homebrew-bump-cask@v1
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+        tap: ${{ github.repository_owner }}/jetbrains-eap
+        cask: >-
+          intellij-idea-ce-eap,
+          pycharm-ce-eap,
+          rider-eap
+        livecheck: true
