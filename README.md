@@ -23,6 +23,7 @@ Every cask in this tap ends with `-eap`.
  -  `goland-eap`
  -  `intellij-idea-ce-eap`
  -  `phpstorm-eap`
+ -  `pycharm-eap`
  -  `pycharm-ce-eap`
  -  `rider-eap`
  -  `rubymine-eap`
