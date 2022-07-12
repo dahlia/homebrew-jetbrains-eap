@@ -16,5 +16,6 @@ jobs:
           intellij-idea-ce-eap,
           phpstorm-eap,
           pycharm-ce-eap,
-          rider-eap
+          rider-eap,
+          webstorm-eap
         livecheck: true
