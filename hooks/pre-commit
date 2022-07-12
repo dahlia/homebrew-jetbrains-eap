@@ -1,5 +1,21 @@
 #!/bin/bash
 set -eou pipefail
 
-brew audit --cask --online Casks/*.rb
-brew style --casks Casks/*.rb
+fail=0
+for caskfile in Casks/*.rb; do
+  cask="$(basename -s .rb "$caskfile")"
+  if ! grep "$cask" README.md >/dev/null; then
+    echo "Cask $cask is not listed in README.md"
+    fail=1
+  fi
+  if ! grep "$cask" .github/workflows/bump.yaml >/dev/null; then
+    echo "Cask $cask is not listed in .github/workflows/bump.yaml"
+  fi
+done >&2
+
+brew audit --cask --online Casks/*.rb || fail=1
+brew style --casks Casks/*.rb || fail=1
+
+if [[ "$fail" = "1" ]]; then
+  exit 1
+fi
