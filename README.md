@@ -19,6 +19,7 @@ Casks
 
 Every cask in this tap ends with `-eap`.
 
+ -  `goland-eap`
  -  `intellij-idea-ce-eap`
  -  `phpstorm-eap`
  -  `pycharm-ce-eap`
