@@ -8,3 +8,10 @@ JetBrains EAP versions][1], here we maintain a separated tap for them.
     brew install intellij-idea-ce-eap
 
 [1]: https://github.com/Homebrew/homebrew-cask/issues/32521
+
+
+Casks
+-----
+
+ -  `intellij-idea-ce-eap`
+ -  `rider-eap`
