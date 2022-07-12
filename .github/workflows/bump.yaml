@@ -13,6 +13,7 @@ jobs:
         token: ${{ secrets.GH_TOKEN }}
         tap: ${{ github.repository_owner }}/jetbrains-eap
         cask: >-
+          clion-eap,
           goland-eap,
           intellij-idea-ce-eap,
           phpstorm-eap,
