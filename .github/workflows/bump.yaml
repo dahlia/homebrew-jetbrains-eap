@@ -15,6 +15,7 @@ jobs:
         cask: >-
           clion-eap,
           datagrip-eap,
+          dataspell-eap,
           goland-eap,
           intellij-idea-ce-eap,
           intellij-idea-eap,
