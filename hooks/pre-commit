@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eou pipefail
+
+brew audit --cask --online Casks/*.rb
+brew style --casks Casks/*.rb

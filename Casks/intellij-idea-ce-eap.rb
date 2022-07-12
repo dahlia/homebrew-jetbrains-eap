@@ -9,7 +9,7 @@ cask "intellij-idea-ce-eap" do
     sha256 "e1b46ffc368c81e5b0e27f7f9bc76a3526957084231adafa761045486f5d0eae"
   end
 
-  url "https://download.jetbrains.com/idea/ideaIC-#{version.after_comma}#{arch}.dmg"
+  url "https://download.jetbrains.com/idea/ideaIC-#{version.csv.second}#{arch}.dmg"
   name "IntelliJ IDEA Community Edition EAP"
   name "IntelliJ IDEA CE EAP"
   desc "IDE for Java development - community edition (EAP)"

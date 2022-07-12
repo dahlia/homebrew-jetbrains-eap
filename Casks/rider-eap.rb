@@ -9,7 +9,7 @@ cask "rider-eap" do
     sha256 "7653db21eb9d34cb9311eeed5a18b9ccbddebdbb5af19d3cec8861237c9986d3"
   end
 
-  url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.before_comma}-#{version.after_comma}.Checked#{arch}.dmg"
+  url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
   name "JetBrains Rider EAP"
   desc ".NET IDE (EAP)"
   homepage "https://www.jetbrains.com/rider/nextversion/"
