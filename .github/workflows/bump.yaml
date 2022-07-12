@@ -14,6 +14,7 @@ jobs:
         tap: ${{ github.repository_owner }}/jetbrains-eap
         cask: >-
           clion-eap,
+          datagrip-eap,
           goland-eap,
           intellij-idea-ce-eap,
           intellij-idea-eap,

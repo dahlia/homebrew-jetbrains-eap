@@ -20,6 +20,7 @@ Casks
 Every cask in this tap ends with `-eap`.
 
  -  `clion-eap`
+ -  `datagrip-eap`
  -  `goland-eap`
  -  `intellij-idea-ce-eap`
  -  `intellij-idea-eap`
