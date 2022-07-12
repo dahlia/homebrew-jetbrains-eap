@@ -27,6 +27,11 @@ Every cask in this tap ends with `-eap`.
  -  `rubymine-eap`
  -  `webstorm-eap`
 
+Note that here's no cask for AppCode EAP, because [homebrew/cask-versions] tap
+still maintains it (but don't know why they treat only it special):
+
+ -  `homebrew/cask-versions/appcode-eap`
+
 FYI, Android Studio has beta and canary channel instead of EAP, and casks for
 them are included in [homebrew/cask-versions] tap:
 
