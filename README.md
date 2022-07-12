@@ -26,3 +26,11 @@ Every cask in this tap ends with `-eap`.
  -  `rider-eap`
  -  `rubymine-eap`
  -  `webstorm-eap`
+
+FYI, Android Studio has beta and canary channel instead of EAP, and casks for
+them are included in [homebrew/cask-versions] tap:
+
+ -  `homebrew/cask-versions/android-studio-preview-beta`
+ -  `homebrew/cask-versions/android-studio-preview-canary`
+
+[homebrew/cask-versions]: https://github.com/Homebrew/homebrew-cask-versions
