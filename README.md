@@ -14,4 +14,5 @@ Casks
 -----
 
  -  `intellij-idea-ce-eap`
+ -  `pycharm-ce-eap`
  -  `rider-eap`
