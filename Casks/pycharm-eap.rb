@@ -1,13 +1,13 @@
 cask "pycharm-eap" do
   arch = Hardware::CPU.intel? ? "" : "-aarch64"
 
-  version "2022.2,222.3345.3"
+  version "2022.2,222.3345.40"
 
   url "https://download.jetbrains.com/python/pycharm-professional-#{version.csv.second}#{arch}.dmg"
   if Hardware::CPU.intel?
-    sha256 "9dfa4be69d656774569f09b0695fa77a9e03a7068c402b3869a5cdb2fe78d270"
+    sha256 "0c96cf483de72d21b3372b004707bfbe5a1b9fdb1a8a25b8ba6b6f360706e862"
   else
-    sha256 "e6e5b31129c4aa803af3c58d72166861cf890c8d89ea5d44b46f607d653e13bb"
+    sha256 "1a19311e17d86d48099f313ce411ae0ba1c2cfe7a2782b32019e841cbea2ca6c"
   end
 
   name "PyCharm EAP"
