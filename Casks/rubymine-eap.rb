@@ -1,12 +1,12 @@
 cask "rubymine-eap" do
   arch = Hardware::CPU.intel? ? "" : "-aarch64"
 
-  version "2022.2.1,222.3739.16"
+  version "2022.2.1,222.3739.41"
 
   if Hardware::CPU.intel?
-    sha256 "0c42487614bef843c1b56548e7d03053ad11c53ad75e525da075e154c12cd5b5"
+    sha256 "d943a0a891c63dc9a07c4b2b7d30ec92f6f86402a639462b2a5353f7a790d51c"
   else
-    sha256 "1dd934c7e6304daf4cbcb1b08093390fb25b7dc2e2a885122a6bd42d0f727e80"
+    sha256 "fa4f99a35318ec45407e0dbfb02dad6149f0336246f1284cb24d1c9910dc1819"
   end
 
   url "https://download.jetbrains.com/ruby/RubyMine-#{version.csv.second}#{arch}.dmg"
