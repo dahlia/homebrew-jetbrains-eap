@@ -1,13 +1,14 @@
 cask "intellij-idea-eap" do
-  arch = Hardware::CPU.intel? ? "" : "-aarch64"
-
-  version "2022.2.1,222.3739.24"
-
-  if Hardware::CPU.intel?
-    sha256 "da59fb71892f200a085e63a7896b03614b67fc6811aaa206f35c1f314c9c9187"
-  else
-    sha256 "07e69fd537e6faaf21514092acfacd04d307fea68a5e2bb7e9a636104f8fc160"
+  arch = on_intel do
+    ""
   end
+  on_arm do
+    "-aarch64"
+  end
+
+  version "2022.2.2,222.4167.9"
+  sha256 arm:   "03468a792bbbf1d768e66d2672b6edb2c942ba82114ba4ef3320aac36afcf35d",
+         intel: "40b3d126624961b26d5d4c41a3a59a5457dfdcb42cfb44ac5cc844a71477ee2f"
 
   url "https://download.jetbrains.com/idea/ideaIU-#{version.csv.second}#{arch}.dmg"
   name "IntelliJ IDEA Ultimate"
