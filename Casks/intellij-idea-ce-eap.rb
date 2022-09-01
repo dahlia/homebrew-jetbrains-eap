@@ -1,13 +1,14 @@
 cask "intellij-idea-ce-eap" do
-  arch = Hardware::CPU.intel? ? "" : "-aarch64"
-
-  version "2022.2.1,222.3739.24"
-
-  if Hardware::CPU.intel?
-    sha256 "bc7c3d845457a9e42467c00e30567ceb6d4f59633f89e6dea5b1c20e3fd3b79e"
-  else
-    sha256 "8f1a04da69c7cb40147f121e6c834378825c9ea0c3005079b1edbfef1ac03e84"
+  arch = on_intel do
+    ""
   end
+  on_arm do
+    "-aarch64"
+  end
+
+  version "2022.2.2,222.4167.9"
+  sha256 arm:   "166a62367deb895177525f62cfea2e57b226cd13b2becf22bbdf15f13f56a412",
+         intel: "30f8a612a7b89199dcb68ff8a3a6fbda1a3975104757b97bcffded1e1e54288b"
 
   url "https://download.jetbrains.com/idea/ideaIC-#{version.csv.second}#{arch}.dmg"
   name "IntelliJ IDEA Community Edition EAP"
