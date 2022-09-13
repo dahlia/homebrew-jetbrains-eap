@@ -1,10 +1,5 @@
 cask "intellij-idea-ce-eap" do
-  arch = on_intel do
-    ""
-  end
-  on_arm do
-    "-aarch64"
-  end
+  arch arm: "-aarch64"
 
   version "2022.2.2,222.4167.9"
   sha256 arm:   "166a62367deb895177525f62cfea2e57b226cd13b2becf22bbdf15f13f56a412",

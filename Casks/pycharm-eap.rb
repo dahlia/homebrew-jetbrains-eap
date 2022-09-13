@@ -1,15 +1,11 @@
 cask "pycharm-eap" do
-  arch = Hardware::CPU.intel? ? "" : "-aarch64"
+  arch arm: "-aarch64"
 
   version "2022.2,222.3345.40"
+  sha256 intel: "0c96cf483de72d21b3372b004707bfbe5a1b9fdb1a8a25b8ba6b6f360706e862",
+         arm:   "1a19311e17d86d48099f313ce411ae0ba1c2cfe7a2782b32019e841cbea2ca6c"
 
   url "https://download.jetbrains.com/python/pycharm-professional-#{version.csv.second}#{arch}.dmg"
-  if Hardware::CPU.intel?
-    sha256 "0c96cf483de72d21b3372b004707bfbe5a1b9fdb1a8a25b8ba6b6f360706e862"
-  else
-    sha256 "1a19311e17d86d48099f313ce411ae0ba1c2cfe7a2782b32019e841cbea2ca6c"
-  end
-
   name "PyCharm EAP"
   name "PyCharm Professional EAP"
   desc "IDE for professional Python development (EAP)"

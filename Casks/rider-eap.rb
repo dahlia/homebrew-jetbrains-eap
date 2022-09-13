@@ -1,13 +1,9 @@
 cask "rider-eap" do
-  arch = Hardware::CPU.intel? ? "" : "-aarch64"
+  arch arm: "-aarch64"
 
   version "2022.2-EAP9,222.3345.44"
-
-  if Hardware::CPU.intel?
-    sha256 "ed597e225be7cd46aa600bf71a913d35c1ed7c5a54bcc12b9d1f97ddd7b4d129"
-  else
-    sha256 "6c3a1dda6d68b915d0c0bce53800a99d22f674dcf570117872d0b5bd62327e75"
-  end
+  sha256 intel: "ed597e225be7cd46aa600bf71a913d35c1ed7c5a54bcc12b9d1f97ddd7b4d129",
+         arm:   "6c3a1dda6d68b915d0c0bce53800a99d22f674dcf570117872d0b5bd62327e75"
 
   url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
   name "JetBrains Rider EAP"

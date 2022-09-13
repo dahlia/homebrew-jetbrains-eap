@@ -1,13 +1,9 @@
 cask "goland-eap" do
-  arch = Hardware::CPU.intel? ? "" : "-aarch64"
+  arch arm: "-aarch64"
 
   version "2022.2,222.3345.48"
-
-  if Hardware::CPU.intel?
-    sha256 "e750b5d87d1c896a1786d82597ce41d2bfdb753e065d6403ce30ef8fecac8120"
-  else
-    sha256 "1846982e3c347bf7ce8fbb2cbaf4bf90b17235c5067d8a21ec0a72ff77974d0a"
-  end
+  sha256 intel: "e750b5d87d1c896a1786d82597ce41d2bfdb753e065d6403ce30ef8fecac8120",
+         arm:   "1846982e3c347bf7ce8fbb2cbaf4bf90b17235c5067d8a21ec0a72ff77974d0a"
 
   url "https://download.jetbrains.com/go/goland-#{version.csv.second}#{arch}.dmg"
   name "GoLand EAP"
