@@ -1,9 +1,9 @@
 cask "datagrip-eap" do
   arch arm: "-aarch64"
 
-  version "2022.2,222.3345.35"
-  sha256 intel: "65fe23affe0c0543f5ec805fcb7381b4a615915a2718d54a80e19fb2af98b3dc",
-         arm:   "5deff57c8efdc45f79c644e5106dffd5fdea036a3848a1c77ac93c4683c09836"
+  version "2022.3,223.6646.21"
+  sha256 intel: "398b2bbd5da961c834b22517f3668ab515d96b8e0b61a8eb13fc18eabf4218c3",
+         arm:   "9103bab1225c2362fe792ebb9a78bd84e332f96c9fa4bac2b81207727c3d3e25"
 
   url "https://download.jetbrains.com/datagrip/datagrip-#{version.csv.second}#{arch}.dmg"
   name "DataGrip EAP"
