@@ -1,9 +1,9 @@
 cask "rubymine-eap" do
   arch arm: "-aarch64"
 
-  version "2022.3,223.6160.11"
-  sha256 arm:   "691af7748d1d346a6c787f7d5f80fee70cd6656da6f2fca8e989b0775c78c916",
-         intel: "a871632f9da5b2f3f76380dbcc41a1bdfdcad958d75d0de8261c348c6a65abc1"
+  version "2022.3,223.6646.99"
+  sha256 arm:   "d14e050d36b561dfb316576fa8e5333c5d75e0660e587c64eab4bdcef36141f6",
+         intel: "fc9728bb756d31d28cd1d593be6602c5c4fa22e92054832f34fb619fceabc7c4"
 
   url "https://download.jetbrains.com/ruby/RubyMine-#{version.csv.second}#{arch}.dmg"
   name "RubyMine EAP"
