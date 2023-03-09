@@ -1,9 +1,9 @@
 cask "clion-eap" do
   arch arm: "-aarch64"
 
-  version "2023.1,231.7864.77"
-  sha256 intel: "d8bb8c4d6eb09e25f2de67b9c336b107c0008b189f0ff8becd6dbf5fb8b60f6c",
-         arm:   "f16beb4107e9040ce29220bf24a2c2ddfec816a8430adf759097e9007842e4ba"
+  version "2023.1,231.8109.4"
+  sha256 intel: "e4a939e7cefe5a32b801d55f23262431dcf30db77aae60b4c04358b50e8cd8a4",
+         arm:   "49b60ae58a8a95691f94f0c805c94562a28f0f948c943ebd1273f94830e9a325"
 
   url "https://download.jetbrains.com/cpp/CLion-#{version.csv.second}#{arch}.dmg"
   name "CLion EAP"
