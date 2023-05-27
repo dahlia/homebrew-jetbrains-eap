@@ -20,7 +20,6 @@ cask "datagrip-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/datagrip"
   depends_on macos: ">= :high_sierra"
 
   app "DataGrip #{version.major_minor} EAP.app"

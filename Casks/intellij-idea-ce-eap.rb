@@ -21,10 +21,6 @@ cask "intellij-idea-ce-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: [
-    "homebrew/cask/intellij-idea-ce",
-    "homebrew/cask-versions/intellij-idea-ce19",
-  ]
   depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA #{version.major_minor} CE EAP.app"

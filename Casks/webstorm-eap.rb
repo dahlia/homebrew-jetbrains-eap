@@ -20,7 +20,6 @@ cask "webstorm-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/webstorm"
   depends_on macos: ">= :high_sierra"
 
   app "WebStorm #{version.major_minor} EAP.app"

@@ -20,7 +20,6 @@ cask "clion-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/clion"
   depends_on macos: ">= :high_sierra"
 
   app "CLion #{version.major_minor} EAP.app"

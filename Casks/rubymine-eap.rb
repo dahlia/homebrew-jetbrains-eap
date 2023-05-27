@@ -20,7 +20,6 @@ cask "rubymine-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/rubymine"
   depends_on macos: ">= :high_sierra"
 
   app "RubyMine #{version.major_minor} EAP.app"

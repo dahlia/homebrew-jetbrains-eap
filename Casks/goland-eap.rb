@@ -20,7 +20,6 @@ cask "goland-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/goland"
   depends_on macos: ">= :high_sierra"
 
   app "GoLand #{version.major_minor} EAP.app"

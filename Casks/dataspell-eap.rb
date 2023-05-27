@@ -20,7 +20,6 @@ cask "dataspell-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/dataspell"
   depends_on macos: ">= :high_sierra"
 
   app "DataSpell #{version.major_minor} EAP.app"

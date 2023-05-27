@@ -21,7 +21,6 @@ cask "pycharm-ce-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/pycharm-ce"
   depends_on macos: ">= :high_sierra"
 
   app "PyCharm CE #{version.major_minor} EAP.app"

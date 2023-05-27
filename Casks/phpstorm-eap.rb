@@ -20,7 +20,6 @@ cask "phpstorm-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/phpstorm"
   depends_on macos: ">= :high_sierra"
 
   app "PhpStorm #{version.major_minor} EAP.app"

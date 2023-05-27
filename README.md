@@ -17,7 +17,8 @@ JetBrains EAP versions][1], instead, here we maintain a separated tap for them.
 Casks
 -----
 
-Every cask in this tap ends with `-eap`.
+Every cask in this tap ends with `-eap`.  These can coexist with the non-EAP
+casks.
 
  -  `clion-eap`
  -  `datagrip-eap`
