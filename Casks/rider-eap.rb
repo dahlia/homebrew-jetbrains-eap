@@ -20,7 +20,6 @@ cask "rider-eap" do
   end
 
   auto_updates true
-  conflicts_with cask: "homebrew/cask/rider"
   depends_on macos: ">= :high_sierra"
 
   app "Rider EAP.app"
