@@ -1,9 +1,9 @@
 cask "rider-eap" do
   arch arm: "-aarch64"
 
-  version "2023.2-EAP2,232.6095.13"
-  sha256 intel: "ec2f9518cc2dd69385ac2879fea3e2e96a266aaaa69b4727019e31f7b7b5ed20",
-         arm:   "93a88d742d7b4591c3c643e0d2cf4b00438d3ffe6d32cd1577fef0560bf90dcc"
+  version "2023.2-EAP3,232.6734.14"
+  sha256 intel: "03d6dee8b0aa0090a0d606084510c248541af252455a56b3fa349d0ab99e1464",
+         arm:   "e87a8889a4071465bb76e153816529d9fec037efee83d078ac13a82be20b6d65"
 
   url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
   name "JetBrains Rider EAP"
