@@ -2,6 +2,7 @@
 set -eou pipefail
 
 fail=0
+casks=()
 for caskfile in Casks/*.rb; do
   cask="$(basename -s .rb "$caskfile")"
   if ! grep "$cask" README.md >/dev/null; then
@@ -11,9 +12,13 @@ for caskfile in Casks/*.rb; do
   if ! grep "$cask" .github/workflows/bump.yaml >/dev/null; then
     echo "Cask $cask is not listed in .github/workflows/bump.yaml"
   fi
+  casks+=("$cask")
 done >&2
 
-brew audit --cask --online Casks/*.rb || fail=1
+tmp_tap="dahlia/jetbrains-eap-$RANDOM"
+brew tap "$tmp_tap" .
+brew audit --git --cask --online "${casks[@]/#/$tmp_tap/}" || fail=1
+brew untap "$tmp_tap"
 brew style --casks Casks/*.rb || fail=1
 
 if [[ "$fail" = "1" ]]; then
