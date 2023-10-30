@@ -1,9 +1,9 @@
 cask "pycharm-ce-eap" do
   arch arm: "-aarch64"
 
-  version "2023.3,233.9802.6"
-  sha256 intel: "9bd90aa418e0e4ba0bb5b07cb2e23f484ccfc9961938e57e40a864ad908f1a74",
-         arm:   "732fe90040bbc4daadea875dda603663ae6958bd7d02d8f7214931e1483a3675"
+  version "2023.3,233.11361.11"
+  sha256 intel: "b9ad27e72728bc8ae0112e5fd625d15172b3e2e52c5c2af5f4b654be8782fdb0",
+         arm:   "72b3ca00940b2a4204bfb4a7cc3457a1d5908c2f9cb420e23e7c718328ecd45e"
 
   url "https://download.jetbrains.com/python/pycharm-community-#{version.csv.second}#{arch}.dmg"
   name "Jetbrains PyCharm Community Edition EAP"
