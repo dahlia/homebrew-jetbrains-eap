@@ -1,11 +1,11 @@
 cask "webstorm-eap" do
   arch arm: "-aarch64"
 
-  version "2023.3,233.11799.95"
-  sha256 intel: "38e249b525ce62657d3d5aae4bc1bcaba8b197c5e1a99a10e7d10390306b1d3b",
-         arm:   "e100fbda97ad8a198bc1232914b014ce5d8e2fc6a8ba27cef12560f2c6b86962"
+  version "2024.1,241.8651"
+  sha256 intel: "d947caa4ea4297e7371ffe9d8f217f17f27df9b6b09a334ba4fa5b67d5e0a16d",
+         arm:   "85c29f7f3ebdac451a9f5018fc6cf2e6b8fdc91662766228fa918b3f7badb0d4"
 
-  url "https://download.jetbrains.com/webstorm/WebStorm-#{version.csv.second}#{arch}.dmg"
+  url "https://download.jetbrains.com/webstorm/nightly/WebStorm-#{version.csv.second}#{arch}.dmg"
   name "WebStorm EAP"
   desc "JavaScript IDE (EAP)"
   homepage "https://www.jetbrains.com/webstorm/nextversion/"
