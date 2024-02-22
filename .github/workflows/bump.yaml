@@ -7,11 +7,12 @@ on:
 jobs:
   bump:
     runs-on: macos-latest
+    if: github.repository == 'dahlia/homebrew-jetbrains-eap'
     steps:
     - uses: macauley/action-homebrew-bump-cask@v1
       with:
         token: ${{ secrets.GH_TOKEN }}
-        tap: ${{ github.repository_owner }}/jetbrains-eap
+        tap: ${{ github.repository }}
         cask: >-
           clion-eap,
           datagrip-eap,
