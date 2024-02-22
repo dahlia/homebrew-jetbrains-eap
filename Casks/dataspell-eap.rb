@@ -23,6 +23,7 @@ cask "dataspell-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "DataSpell #{version.major_minor} EAP.app"
+  binary "#{appdir}/DataSpell #{version.major_minor} EAP.app/Contents/MacOS/dataspell", target: "dataspell-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "dataspell") }.each do |path|

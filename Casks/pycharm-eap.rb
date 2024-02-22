@@ -24,6 +24,7 @@ cask "pycharm-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "PyCharm #{version.major_minor} EAP.app"
+  binary "#{appdir}/PyCharm #{version.major_minor} EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "charm") }.each do |path|
