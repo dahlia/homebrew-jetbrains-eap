@@ -23,6 +23,7 @@ cask "clion-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "CLion #{version.major_minor} EAP.app"
+  binary "#{appdir}/CLion #{version.major_minor} EAP.app/Contents/MacOS/clion", target: "clion-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "clion") }.each do |path|

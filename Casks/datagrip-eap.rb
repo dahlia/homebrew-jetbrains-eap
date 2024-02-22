@@ -23,6 +23,7 @@ cask "datagrip-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "DataGrip #{version.major_minor} EAP.app"
+  binary "#{appdir}/DataGrip #{version.major_minor} EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "datagrip") }.each do |path|

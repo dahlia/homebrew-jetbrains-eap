@@ -23,6 +23,7 @@ cask "phpstorm-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "PhpStorm #{version.major_minor} EAP.app"
+  binary "#{appdir}/PhpStorm #{version.major_minor} EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "pstorm") }.each do |path|

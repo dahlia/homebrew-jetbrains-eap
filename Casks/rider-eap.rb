@@ -23,6 +23,7 @@ cask "rider-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "Rider EAP.app"
+  binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "rider") }.each do |path|

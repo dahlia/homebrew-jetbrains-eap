@@ -23,6 +23,7 @@ cask "rubymine-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "RubyMine #{version.major_minor} EAP.app"
+  binary "#{appdir}/RubyMine #{version.major_minor} EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "mine") }.each do |path|

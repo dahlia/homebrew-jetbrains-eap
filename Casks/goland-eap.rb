@@ -23,6 +23,7 @@ cask "goland-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "GoLand #{version.major_minor} EAP.app"
+  binary "#{appdir}/GoLand #{version.major_minor} EAP.app/Contents/MacOS/goland", target: "goland-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "goland") }.each do |path|

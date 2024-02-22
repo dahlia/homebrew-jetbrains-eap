@@ -23,6 +23,7 @@ cask "intellij-idea-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA #{version.major_minor} EAP.app"
+  binary "#{appdir}/IntelliJ IDEA #{version.major_minor} EAP.app/Contents/MacOS/idea", target: "idea-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "idea") }.each do |path|

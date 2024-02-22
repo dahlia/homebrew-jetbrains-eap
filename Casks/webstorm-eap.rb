@@ -23,6 +23,7 @@ cask "webstorm-eap" do
   depends_on macos: ">= :high_sierra"
 
   app "WebStorm #{version.major_minor} EAP.app"
+  binary "#{appdir}/WebStorm #{version.major_minor} EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "wstorm") }.each do |path|
