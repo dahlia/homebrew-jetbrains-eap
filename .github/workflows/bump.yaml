@@ -12,7 +12,7 @@ jobs:
     - uses: macauley/action-homebrew-bump-cask@v1
       with:
         token: ${{ secrets.GH_TOKEN }}
-        tap: ${{ github.repository }}
+        tap: ${{ github.repository_owner }}/jetbrains-eap
         cask: >-
           clion-eap,
           datagrip-eap,
