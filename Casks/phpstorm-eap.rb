@@ -8,7 +8,7 @@ cask "phpstorm-eap" do
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.csv.second}#{arch}.dmg"
   name "JetBrains PhpStorm EAP"
   desc "PHP IDE by JetBrains (EAP)"
-  homepage "https://www.jetbrains.com/pycharm/nextversion/"
+  homepage "https://www.jetbrains.com/phpstorm/nextversion/"
 
   livecheck do
     url "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&type=eap"
