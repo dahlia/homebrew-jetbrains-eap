@@ -1,9 +1,9 @@
 cask "phpstorm-eap" do
   arch arm: "-aarch64"
 
-  version "2024.3,243.21565.34"
-  sha256 arm:   "fe863c71b27ed7d3c9dc62204a61237f213ed1fcbd3b364fbeb7b23718650453",
-         intel: "73827f9ca4771587b775a850c8071bb48bf897f9f724bc30ca1a31b2bb78d0fc"
+  version "2024.3.1,243.22562.9"
+  sha256 arm:   "d2373604bfc67cc7f989b031e2b7b0010792191354f1e81439843604329d951a",
+         intel: "96c381b86fe985ad12385bcc7654b6bc169aeed1190a5bb68820421f4688c3ea"
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.csv.second}#{arch}.dmg"
   name "JetBrains PhpStorm EAP"
