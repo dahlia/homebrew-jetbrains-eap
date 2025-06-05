@@ -1,9 +1,9 @@
 cask "webstorm-eap" do
   arch arm: "-aarch64"
 
-  version "2025.2,252.18003.34"
-  sha256 intel: "b596153d3a7da866af63e02fc913b867b44750b2066a6e8a0c4f14524723093f",
-         arm:   "82ea9555cfeb2296032f565174e62066413140bf4a348dff5abbdc47179b7688"
+  version "2025.2,252.19874.19"
+  sha256 intel: "ac8782789825ee388d535394e069a6a39fb6fbd4e4241cb69608ab4ef07b7654",
+         arm:   "dd1a972d3d24c9f679d9d33690c0e0b37a6669a4b1ae42ded0d8ea1867750239"
 
   url "https://download.jetbrains.com/webstorm/WebStorm-#{version.csv.second}#{arch}.dmg"
   name "WebStorm EAP"
