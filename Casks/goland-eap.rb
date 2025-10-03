@@ -1,9 +1,9 @@
 cask "goland-eap" do
   arch arm: "-aarch64"
 
-  version "2025.3,253.22441.23"
-  sha256 intel: "ac9ed56df61726c5d2dc9a8c3776bba0a092bb4acce54a12024e51150bc9721c",
-         arm:   "46d438d0cbc9b742bd2378818a042fed3a964c00be12091be35f25876941476d"
+  version "2025.3,253.24325.39"
+  sha256 intel: "356e87f6355615ccefc45154861947772851d91e59c6b36904a786d02ead1d27",
+         arm:   "e2d3fdc131895d00bc3c1ee96b7c985d3b64e9d9f32b7e2c86725caeff516424"
 
   url "https://download.jetbrains.com/go/goland-#{version.csv.second}#{arch}.dmg"
   name "GoLand EAP"
