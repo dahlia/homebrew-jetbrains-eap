@@ -9,9 +9,6 @@ for caskfile in Casks/*.rb; do
     echo "Cask $cask is not listed in README.md"
     fail=1
   fi
-  if ! grep "$cask" .github/workflows/bump.yaml >/dev/null; then
-    echo "Cask $cask is not listed in .github/workflows/bump.yaml"
-  fi
   casks+=("$cask")
 done >&2
 
