@@ -11,14 +11,8 @@ cask "pycharm-ce-eap" do
   desc "IDE for Python programming - Community Edition (EAP)"
   homepage "https://www.jetbrains.com/pycharm/nextversion/"
 
-  livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=PCC&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["PCC"].map do |release|
-        "#{release["version"]},#{release["build"]}"
-      end
-    end
-  end
+  # https://blog.jetbrains.com/pycharm/2025/12/pycharm-2025-3-unified-ide-jupyter-notebooks-in-remote-development-uv-as-default-and-more/
+  deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "phpstorm-eap"
 
   auto_updates true
   depends_on macos: ">= :high_sierra"
