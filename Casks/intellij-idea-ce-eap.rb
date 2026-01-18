@@ -11,14 +11,8 @@ cask "intellij-idea-ce-eap" do
   desc "IDE for Java development - community edition (EAP)"
   homepage "https://www.jetbrains.com/idea/nextversion/"
 
-  livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=IIC&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["IIC"].map do |release|
-        "#{release["version"]},#{release["build"]}"
-      end
-    end
-  end
+  # https://blog.jetbrains.com/idea/2025/12/intellij-idea-unified-release/
+  deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "intellij-idea-eap"
 
   auto_updates true
   depends_on macos: ">= :high_sierra"
