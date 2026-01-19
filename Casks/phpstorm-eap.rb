@@ -20,7 +20,6 @@ cask "phpstorm-eap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "PhpStorm #{version.major_minor} EAP.app"
   binary "#{appdir}/PhpStorm #{version.major_minor} EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"

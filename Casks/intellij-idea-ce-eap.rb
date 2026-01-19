@@ -15,7 +15,6 @@ cask "intellij-idea-ce-eap" do
   deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "intellij-idea-eap"
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA #{version.major_minor} CE EAP.app"
   binary "#{appdir}/IntelliJ IDEA #{version.major_minor} CE EAP.app/Contents/MacOS/idea", target: "idea-ce-eap"

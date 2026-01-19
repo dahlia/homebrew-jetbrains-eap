@@ -15,7 +15,6 @@ cask "pycharm-ce-eap" do
   deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "phpstorm-eap"
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "PyCharm CE #{version.major_minor} EAP.app"
   binary "#{appdir}/PyCharm CE #{version.major_minor} EAP.app/Contents/MacOS/pycharm", target: "pycharm-ce-eap"
