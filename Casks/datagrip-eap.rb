@@ -20,7 +20,6 @@ cask "datagrip-eap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "DataGrip #{version.major_minor} EAP.app"
   binary "#{appdir}/DataGrip #{version.major_minor} EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"

@@ -20,7 +20,6 @@ cask "rubymine-eap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "RubyMine #{version.major_minor} EAP.app"
   binary "#{appdir}/RubyMine #{version.major_minor} EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"

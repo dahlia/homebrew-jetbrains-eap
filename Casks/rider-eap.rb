@@ -20,7 +20,6 @@ cask "rider-eap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "Rider EAP.app"
   binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"

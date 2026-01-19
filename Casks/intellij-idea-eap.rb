@@ -20,7 +20,6 @@ cask "intellij-idea-eap" do
   end
 
   auto_updates true
-  depends_on macos: ">= :high_sierra"
 
   app "IntelliJ IDEA #{version.major_minor} EAP.app"
   binary "#{appdir}/IntelliJ IDEA #{version.major_minor} EAP.app/Contents/MacOS/idea", target: "idea-eap"
