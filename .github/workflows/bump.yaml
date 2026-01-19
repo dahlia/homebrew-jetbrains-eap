@@ -9,21 +9,13 @@ jobs:
     runs-on: macos-latest
     if: github.repository == 'dahlia/homebrew-jetbrains-eap'
     steps:
-    - uses: macauley/action-homebrew-bump-cask@v1
-      with:
-        token: ${{ secrets.GH_TOKEN }}
-        tap: ${{ github.repository_owner }}/jetbrains-eap
-        cask: >-
-          clion-eap,
-          datagrip-eap,
-          dataspell-eap,
-          goland-eap,
-          intellij-idea-ce-eap,
-          intellij-idea-eap,
-          phpstorm-eap,
-          pycharm-ce-eap,
-          pycharm-eap,
-          rider-eap,
-          rubymine-eap,
-          webstorm-eap
-        livecheck: true
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - uses: Homebrew/actions/setup-homebrew@main
+      - name: Bump packages
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          brew bump --no-fork --open-pr --casks --tap=$GITHUB_REPOSITORY
