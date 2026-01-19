@@ -1,8 +1,8 @@
 name: check
 on:
   push:
-    branches-ignore:
-    - bump-*
+    branches:
+      - main
   pull_request: {}
 
 jobs:
