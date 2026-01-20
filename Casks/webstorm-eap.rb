@@ -11,18 +11,25 @@ cask "webstorm-eap" do
   homepage "https://www.jetbrains.com/webstorm/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=WS&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["WS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=WS&release.type=eap"
+    strategy :json do |json|
+      json["WS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "WebStorm #{version.major_minor} EAP.app"
-  binary "#{appdir}/WebStorm #{version.major_minor} EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
+  # The application path is often inconsistent between versions
+  rename "WebStorm*.app", "WebStorm EAP.app"
+
+  app "WebStorm EAP.app"
+  binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "wstorm") }.each do |path|
@@ -34,9 +41,9 @@ cask "webstorm-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/WebStorm#{version.major_minor}",
-    "~/Library/Caches/JetBrains/WebStorm#{version.major_minor}",
-    "~/Library/Logs/JetBrains/WebStorm#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/WebStorm#{version.csv.first}",
+    "~/Library/Caches/JetBrains/WebStorm#{version.csv.first}",
+    "~/Library/Logs/JetBrains/WebStorm#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.WebStorm-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.WebStorm-EAP.savedState",
   ]

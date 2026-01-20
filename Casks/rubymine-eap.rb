@@ -11,18 +11,25 @@ cask "rubymine-eap" do
   homepage "https://www.jetbrains.com/ruby/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=RM&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["RM"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=RM&release.type=eap"
+    strategy :json do |json|
+      json["RM"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "RubyMine #{version.major_minor} EAP.app"
-  binary "#{appdir}/RubyMine #{version.major_minor} EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
+  # The application path is often inconsistent between versions
+  rename "RubyMine*.app", "RubyMine EAP.app"
+
+  app "RubyMine EAP.app"
+  binary "#{appdir}/RubyMine EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "mine") }.each do |path|
@@ -34,9 +41,9 @@ cask "rubymine-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/RubyMine#{version.major_minor}",
-    "~/Library/Caches/JetBrains/RubyMine#{version.major_minor}",
-    "~/Library/Logs/JetBrains/RubyMine#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/RubyMine#{version.csv.first}",
+    "~/Library/Caches/JetBrains/RubyMine#{version.csv.first}",
+    "~/Library/Logs/JetBrains/RubyMine#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.RubyMine-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.RubyMine-EAP.savedState",
   ]

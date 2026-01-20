@@ -11,18 +11,25 @@ cask "clion-eap" do
   homepage "https://www.jetbrains.com/clion/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=CL&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["CL"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=CL&release.type=eap"
+    strategy :json do |json|
+      json["CL"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "CLion #{version.major_minor} EAP.app"
-  binary "#{appdir}/CLion #{version.major_minor} EAP.app/Contents/MacOS/clion", target: "clion-eap"
+  # The application path is often inconsistent between versions
+  rename "CLion*.app", "CLion EAP.app"
+
+  app "CLion EAP.app"
+  binary "#{appdir}/CLion EAP.app/Contents/MacOS/clion", target: "clion-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "clion") }.each do |path|
@@ -34,9 +41,9 @@ cask "clion-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/CLion#{version.major_minor}",
-    "~/Library/Caches/JetBrains/CLion#{version.major_minor}",
-    "~/Library/Logs/JetBrains/CLion#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/CLion#{version.csv.first}",
+    "~/Library/Caches/JetBrains/CLion#{version.csv.first}",
+    "~/Library/Logs/JetBrains/CLion#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.CLion-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.CLion-EAP.savedState",
   ]
