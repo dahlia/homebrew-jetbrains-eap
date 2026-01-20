@@ -5,6 +5,10 @@ fail=0
 casks=()
 for caskfile in Casks/*.rb; do
   cask="$(basename -s .rb "$caskfile")"
+  # Skip community edition casks
+  if [[ "$cask" == *"-ce-"* ]]; then
+    continue
+  fi
   if ! grep "$cask" README.md >/dev/null; then
     echo "Cask $cask is not listed in README.md"
     fail=1
