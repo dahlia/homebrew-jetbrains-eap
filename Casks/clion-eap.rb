@@ -24,6 +24,7 @@ cask "clion-eap" do
   end
 
   auto_updates true
+  depends_on macos: ">= :monterey"
 
   # The application path is often inconsistent between versions
   rename "CLion*.app", "CLion EAP.app"
