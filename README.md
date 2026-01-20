@@ -9,8 +9,8 @@ JetBrains EAP versions][1], instead, here we maintain a separated tap for them.
     brew tap dahlia/jetbrains-eap
     brew install intellij-idea-ce-eap
 
-[GitHub Actions]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yaml
-[GitHub Actions badge]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yaml/badge.svg
+[GitHub Actions]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml/badge.svg?branch=main&event=push
+[GitHub Actions badge]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml?query=event:push+branch:main
 [1]: https://github.com/Homebrew/homebrew-cask/issues/32521
 
 
