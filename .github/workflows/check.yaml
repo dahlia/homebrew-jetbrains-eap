@@ -1,13 +1,81 @@
-name: check
+name: Check
+
 on:
   push:
     branches:
       - main
-  pull_request: {}
+  pull_request:
 
 jobs:
-  check:
-    runs-on: macos-latest
+  bump:
+    uses: ./.github/workflows/bump.yaml
+    secrets: inherit # https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows#passing-secrets-to-nested-workflows
+
+  changed-packages:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.changed-files.outputs.all_changed_files }}
     steps:
-    - uses: actions/checkout@v4
-    - run: hooks/pre-commit
+      - uses: actions/checkout@v6
+      - uses: tj-actions/changed-files@v47
+        id: changed-files
+        with:
+          files: '**/*.rb'
+          matrix: true
+      - name: List all changed files
+        run: echo '${{ steps.changed-files.outputs.all_changed_files }}'
+
+  verify-packages:
+    needs:
+      - changed-packages
+    if: ${{ needs.changed-packages.outputs.matrix != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        packages: ${{ fromJSON(needs.changed-packages.outputs.matrix) }}
+        os: # https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+          - macos-26 # Based on arm64.
+          - macos-15-intel # Based on x64.
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Homebrew Tap
+        run: |
+          brew update-reset "$(brew --repository)"
+          TAP_BASE=$(brew --taps)/${{ github.repository_owner }}
+          mkdir -vp $TAP_BASE
+          ln -vs $GITHUB_WORKSPACE $TAP_BASE/${{ github.event.repository.name }}
+      - name: Check Package
+        run: |
+          PACKAGE_NAME="$(basename "${{ matrix.packages }}" .rb)"
+
+          README_FILE="README.md"
+          if ! grep -qi -- "\`$PACKAGE_NAME\`" "$README_FILE"; then
+            echo "Package \`$PACKAGE_NAME\` not found in \`$README_FILE\`"
+            exit 1
+          fi
+
+          printf "\033[32m==>\033[0m \033[1;30mLinting\033[0m \033[1;32m%s\033[0m\n" "$PACKAGE_NAME"
+          brew style "$PACKAGE_NAME"
+          printf "\033[32m==>\033[0m \033[1;30mAuditing\033[0m \033[1;32m%s\033[0m\n" "$PACKAGE_NAME"
+          brew audit --strict "$PACKAGE_NAME"
+          brew install "$PACKAGE_NAME"
+          brew uninstall "$PACKAGE_NAME"
+
+  # Status check that is required in branch protection rules.
+  final-status:
+    needs:
+      - bump
+      - changed-packages
+      - verify-packages
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Check
+        run: |
+          results=$(tr -d '\n' <<< '${{ toJSON(needs.*.result) }}')
+          if ! grep -q -v -E '(failure|cancelled)' <<< "$results"; then
+            echo "One or more required jobs failed"
+            exit 1
+          fi
+          echo "All required jobs completed successfully."
