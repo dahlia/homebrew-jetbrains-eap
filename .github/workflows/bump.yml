@@ -10,7 +10,7 @@ on:
 jobs:
   bump:
     runs-on: macos-latest
-    if: github.repository == 'dahlia/homebrew-jetbrains-eap'
+    if: github.event.repository.fork == false
     steps:
       - name: Set up Git
         run: |

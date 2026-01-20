@@ -8,7 +8,7 @@ on:
 
 jobs:
   bump:
-    uses: ./.github/workflows/bump.yaml
+    uses: ./.github/workflows/bump.yml
     secrets: inherit # https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows#passing-secrets-to-nested-workflows
 
   changed-packages:
