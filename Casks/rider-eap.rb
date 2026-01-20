@@ -11,15 +11,22 @@ cask "rider-eap" do
   homepage "https://www.jetbrains.com/rider/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=RD&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["RD"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=RD&release.type=eap"
+    strategy :json do |json|
+      json["RD"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
+
+  # The application path is often inconsistent between versions
+  rename "Rider*.app", "Rider EAP.app"
 
   app "Rider EAP.app"
   binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"
@@ -34,9 +41,9 @@ cask "rider-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/Rider#{version.major_minor}",
-    "~/Library/Caches/JetBrains/Rider#{version.major_minor}",
-    "~/Library/Logs/JetBrains/Rider#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/Rider#{version.csv.first}",
+    "~/Library/Caches/JetBrains/Rider#{version.csv.first}",
+    "~/Library/Logs/JetBrains/Rider#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.rider-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.rider-EAP.savedState",
   ]

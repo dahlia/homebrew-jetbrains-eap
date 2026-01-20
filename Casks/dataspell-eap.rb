@@ -11,18 +11,25 @@ cask "dataspell-eap" do
   homepage "https://www.jetbrains.com/dataspell/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DS&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["DS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=DS&release.type=eap"
+    strategy :json do |json|
+      json["DS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "DataSpell #{version.major_minor} EAP.app"
-  binary "#{appdir}/DataSpell #{version.major_minor} EAP.app/Contents/MacOS/dataspell", target: "dataspell-eap"
+  # The application path is often inconsistent between versions
+  rename "DataSpell*.app", "DataSpell EAP.app"
+
+  app "DataSpell EAP.app"
+  binary "#{appdir}/DataSpell EAP.app/Contents/MacOS/dataspell", target: "dataspell-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "dataspell") }.each do |path|
@@ -34,9 +41,9 @@ cask "dataspell-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/DataSpell#{version.major_minor}",
-    "~/Library/Caches/JetBrains/DataSpell#{version.major_minor}",
-    "~/Library/Logs/JetBrains/DataSpell#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/DataSpell#{version.csv.first}",
+    "~/Library/Caches/JetBrains/DataSpell#{version.csv.first}",
+    "~/Library/Logs/JetBrains/DataSpell#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.dataspell-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.dataspell-EAP.savedState",
   ]

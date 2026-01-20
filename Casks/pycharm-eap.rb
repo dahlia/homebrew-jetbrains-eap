@@ -12,18 +12,25 @@ cask "pycharm-eap" do
   homepage "https://www.jetbrains.com/pycharm/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["PCP"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=PCP&release.type=eap"
+    strategy :json do |json|
+      json["PCP"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "PyCharm #{version.major_minor} EAP.app"
-  binary "#{appdir}/PyCharm #{version.major_minor} EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
+  # The application path is often inconsistent between versions
+  rename "PyCharm*.app", "PyCharm EAP.app"
+
+  app "PyCharm EAP.app"
+  binary "#{appdir}/PyCharm EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "charm") }.each do |path|
@@ -35,9 +42,9 @@ cask "pycharm-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/PyCharm#{version.major_minor}",
-    "~/Library/Caches/JetBrains/PyCharm#{version.major_minor}",
-    "~/Library/Logs/JetBrains/PyCharm#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/PyCharm#{version.csv.first}",
+    "~/Library/Caches/JetBrains/PyCharm#{version.csv.first}",
+    "~/Library/Logs/JetBrains/PyCharm#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.pycharm-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.pycharm-EAP.savedState",
   ]

@@ -11,18 +11,25 @@ cask "goland-eap" do
   homepage "https://www.jetbrains.com/go/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=GO&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["GO"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=GO&release.type=eap"
+    strategy :json do |json|
+      json["GO"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "GoLand #{version.major_minor} EAP.app"
-  binary "#{appdir}/GoLand #{version.major_minor} EAP.app/Contents/MacOS/goland", target: "goland-eap"
+  # The application path is often inconsistent between versions
+  rename "GoLand*.app", "GoLand EAP.app"
+
+  app "GoLand EAP.app"
+  binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "goland") }.each do |path|
@@ -34,9 +41,9 @@ cask "goland-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/GoLand#{version.major_minor}",
-    "~/Library/Caches/JetBrains/GoLand#{version.major_minor}",
-    "~/Library/Logs/JetBrains/GoLand#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/GoLand#{version.csv.first}",
+    "~/Library/Caches/JetBrains/GoLand#{version.csv.first}",
+    "~/Library/Logs/JetBrains/GoLand#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.goland-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.goland-EAP.SavedState",
   ]

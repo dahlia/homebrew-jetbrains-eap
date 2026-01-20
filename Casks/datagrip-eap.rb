@@ -11,18 +11,25 @@ cask "datagrip-eap" do
   homepage "https://www.jetbrains.com/datagrip/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DG&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["DG"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=DG&release.type=eap"
+    strategy :json do |json|
+      json["DG"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
 
   auto_updates true
 
-  app "DataGrip #{version.major_minor} EAP.app"
-  binary "#{appdir}/DataGrip #{version.major_minor} EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
+  # The application path is often inconsistent between versions
+  rename "DataGrip*.app", "DataGrip EAP.app"
+
+  app "DataGrip EAP.app"
+  binary "#{appdir}/DataGrip EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
 
   uninstall_postflight do
     ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "datagrip") }.each do |path|
@@ -34,9 +41,9 @@ cask "datagrip-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/DataGrip#{version.major_minor}",
-    "~/Library/Caches/JetBrains/DataGrip#{version.major_minor}",
-    "~/Library/Logs/JetBrains/DataGrip#{version.major_minor}",
+    "~/Library/Application Support/JetBrains/DataGrip#{version.csv.first}",
+    "~/Library/Caches/JetBrains/DataGrip#{version.csv.first}",
+    "~/Library/Logs/JetBrains/DataGrip#{version.csv.first}",
     "~/Library/Preferences/com.jetbrains.datagrip-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.datagrip-EAP.savedState",
   ]
