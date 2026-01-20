@@ -12,7 +12,7 @@ cask "pycharm-ce-eap" do
   homepage "https://www.jetbrains.com/pycharm/nextversion/"
 
   # https://blog.jetbrains.com/pycharm/2025/12/pycharm-2025-3-unified-ide-jupyter-notebooks-in-remote-development-uv-as-default-and-more/
-  deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "phpstorm-eap"
+  deprecate! date: "2025-12-08", because: :discontinued, replacement_cask: "pycharm-eap"
 
   auto_updates true
 
