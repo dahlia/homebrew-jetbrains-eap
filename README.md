@@ -1,7 +1,7 @@
 JetBrains EAP Casks for Homebrew Cask
 =====================================
 
-[![GitHub Actions][GitHub Actions badge]][GitHub Actions]
+[![Check](https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml/badge.svg?branch=main&event=push)](https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml?query=event:push+branch:main)
 
 Since [homebrew-cask and homebrew-cask-versions decided to do not accept all
 JetBrains EAP versions][1], instead, here we maintain a separated tap for them.
@@ -9,8 +9,6 @@ JetBrains EAP versions][1], instead, here we maintain a separated tap for them.
     brew tap dahlia/jetbrains-eap
     brew install intellij-idea-ce-eap
 
-[GitHub Actions]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml/badge.svg?branch=main&event=push
-[GitHub Actions badge]: https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml?query=event:push+branch:main
 [1]: https://github.com/Homebrew/homebrew-cask/issues/32521
 
 
