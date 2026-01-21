@@ -11,14 +11,10 @@ cask "phpstorm-eap" do
   homepage "https://www.jetbrains.com/phpstorm/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=PS&release.type=eap"
-    strategy :json do |json|
-      json["PS"]&.map do |release|
-        version = release["version"]
-        build = release["build"]
-        next if version.blank? || build.blank?
-
-        "#{version},#{build}"
+    url "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&type=eap"
+    strategy :page_match do |page|
+      JSON.parse(page)["PS"].map do |release|
+        "#{release["version"]},#{release["build"]}"
       end
     end
   end
