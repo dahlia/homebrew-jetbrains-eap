@@ -11,10 +11,14 @@ cask "goland-eap" do
   homepage "https://www.jetbrains.com/go/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=GO&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["GO"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=GO&release.type=eap"
+    strategy :json do |json|
+      json["GO"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end

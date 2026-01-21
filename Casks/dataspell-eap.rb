@@ -11,10 +11,14 @@ cask "dataspell-eap" do
   homepage "https://www.jetbrains.com/dataspell/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DS&latest=true&type=eap"
-    strategy :page_match do |page|
-      JSON.parse(page)["DS"].map do |release|
-        "#{release["version"]},#{release["build"]}"
+    url "https://data.services.jetbrains.com/products/releases?code=DS&release.type=eap"
+    strategy :json do |json|
+      json["DS"]&.map do |release|
+        version = release["version"]
+        build = release["build"]
+        next if version.blank? || build.blank?
+
+        "#{version},#{build}"
       end
     end
   end
