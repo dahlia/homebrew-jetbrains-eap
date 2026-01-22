@@ -13,6 +13,7 @@ jobs:
     if: github.event.repository.fork == false
     permissions: write-all
     steps:
+      - uses: actions/checkout@v6
       - name: Set up Git
         run: |
           git config --global user.name 'github-actions[bot]'
