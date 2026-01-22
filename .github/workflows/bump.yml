@@ -17,9 +17,15 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - name: Merge PRs
+        if: github.event_name == 'pull_request' && github.triggering_actor == 'hong-bot' # Run this after bump cask PRs are created.
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.number }} --auto --rebase
       - uses: Homebrew/actions/setup-homebrew@main
       - name: Bump packages
         env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }}
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }} # Different from GITHUB_TOKEN, this is a PAT for hong-bot.
         run: |
           brew bump --no-fork --open-pr --casks --tap=$GITHUB_REPOSITORY
