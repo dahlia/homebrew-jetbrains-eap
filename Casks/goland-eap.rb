@@ -11,7 +11,7 @@ cask "goland-eap" do
   homepage "https://www.jetbrains.com/go/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=GO&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=GO&latest=true&type=eap"
     strategy :json do |json|
       json["GO"]&.map do |release|
         version = release["version"]

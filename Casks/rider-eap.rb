@@ -11,7 +11,7 @@ cask "rider-eap" do
   homepage "https://www.jetbrains.com/rider/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=RD&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=RD&latest=true&type=eap"
     strategy :json do |json|
       json["RD"]&.map do |release|
         version = release["version"]

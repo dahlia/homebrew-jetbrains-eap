@@ -11,7 +11,7 @@ cask "dataspell-eap" do
   homepage "https://www.jetbrains.com/dataspell/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DS&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=DS&latest=true&type=eap"
     strategy :json do |json|
       json["DS"]&.map do |release|
         version = release["version"]

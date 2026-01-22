@@ -11,7 +11,7 @@ cask "datagrip-eap" do
   homepage "https://www.jetbrains.com/datagrip/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DG&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=DG&latest=true&type=eap"
     strategy :json do |json|
       json["DG"]&.map do |release|
         version = release["version"]
