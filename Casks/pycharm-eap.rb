@@ -12,7 +12,7 @@ cask "pycharm-eap" do
   homepage "https://www.jetbrains.com/pycharm/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=PCP&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=PC&latest=true&type=eap"
     strategy :json do |json|
       json["PCP"]&.map do |release|
         version = release["version"]

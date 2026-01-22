@@ -11,7 +11,7 @@ cask "webstorm-eap" do
   homepage "https://www.jetbrains.com/webstorm/nextversion/"
 
   livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=WS&release.type=eap"
+    url "https://data.services.jetbrains.com/products/releases?code=WS&latest=true&type=eap"
     strategy :json do |json|
       json["WS"]&.map do |release|
         version = release["version"]
