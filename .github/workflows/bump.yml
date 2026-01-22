@@ -11,7 +11,6 @@ jobs:
   bump:
     runs-on: macos-latest
     if: github.event.repository.fork == false
-    permissions: write-all
     steps:
       - uses: actions/checkout@v6
       - name: Set up Git
