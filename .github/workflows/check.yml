@@ -68,7 +68,7 @@ jobs:
       - bump
       - changed-packages
       - verify-packages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: always()
     steps:
       - name: Check
