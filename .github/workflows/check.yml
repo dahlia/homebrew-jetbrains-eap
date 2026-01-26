@@ -12,7 +12,7 @@ jobs:
     secrets: inherit # https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows#passing-secrets-to-nested-workflows
 
   changed-packages:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     outputs:
       matrix: ${{ steps.changed-files.outputs.all_changed_files }}
     steps:
