@@ -80,12 +80,12 @@ jobs:
           fi
           echo "All required jobs completed successfully."
 
-
   merge-current-pr:
     runs-on: ubuntu-slim
     needs: final-status
     if: github.event_name == 'pull_request' && github.triggering_actor == 'hong-bot' # Run this after bump package PRs are created.
     steps:
+      - uses: actions/checkout@v6
       - name: Merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token will not trigger workflows run, which is desired here.
