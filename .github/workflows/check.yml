@@ -9,6 +9,7 @@ on:
 jobs:
   bump:
     uses: ./.github/workflows/bump.yml
+    if: github.ref == 'refs/heads/main' # Don't run this on PRs due to concurrency issues.
     secrets: inherit # https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows#passing-secrets-to-nested-workflows
 
   changed-packages:
