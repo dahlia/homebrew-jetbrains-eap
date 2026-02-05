@@ -72,6 +72,10 @@ jobs:
     runs-on: ubuntu-slim
     if: always()
     steps:
+      - name: Write GitHub context to log
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Check
         run: |
           results=$(tr -d '\n' <<< '${{ toJSON(needs.*.result) }}')
