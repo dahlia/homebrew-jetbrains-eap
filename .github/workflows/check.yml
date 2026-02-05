@@ -75,7 +75,7 @@ jobs:
       - name: Write GitHub context to log
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: echo github.event_name ${{ github.event_name }}, github.actor ${{ github.actor }}
       - name: Check
         run: |
           results=$(tr -d '\n' <<< '${{ toJSON(needs.*.result) }}')
