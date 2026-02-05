@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - "*"
 
 jobs:
   bump:
@@ -85,7 +87,7 @@ jobs:
           fi
           echo "All required jobs completed successfully."
       - name: Merge current PR
-        if: github.event_name == 'pull_request' && github.actor == 'hong-bot'
+        if: github.event_name == 'pull_request' && github.actor == 'Goooler'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token will not trigger workflows run, which is desired here.
         run: |
