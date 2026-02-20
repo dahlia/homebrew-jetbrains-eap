@@ -27,6 +27,7 @@ casks.
 - `pycharm-eap`
 - `rider-eap`
 - `rubymine-eap`
+- `rustrover-eap`
 - `webstorm-eap`
 
 FYI, Android Studio has beta and canary channel instead of EAP, and casks for
