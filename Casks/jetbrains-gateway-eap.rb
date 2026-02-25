@@ -1,4 +1,4 @@
-cask "gateway-eap" do
+cask "jetbrains-gateway-eap" do
   arch arm: "-aarch64"
 
   version "2026.1,261.21525.48"
@@ -29,7 +29,7 @@ cask "gateway-eap" do
   rename "JetBrains Gateway*.app", "JetBrains Gateway EAP.app"
 
   app "JetBrains Gateway EAP.app"
-  binary "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway", target: "gateway-eap"
+  binary "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway", target: "jetbrains-gateway-eap"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/JetBrainsGateway#{version.csv.first}",
