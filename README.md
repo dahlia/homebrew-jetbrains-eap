@@ -1,4 +1,4 @@
-JetBrains EAP Casks for Homebrew Cask
+[JetBrains EAP][jetbrains-eap] Casks for Homebrew Cask
 =====================================
 
 [![Check](https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml/badge.svg?branch=main&event=push)](https://github.com/dahlia/homebrew-jetbrains-eap/actions/workflows/check.yml?query=event:push+branch:main)
@@ -36,4 +36,5 @@ them are included in [homebrew-cask] tap:
 - `android-studio-preview@beta`
 - `android-studio-preview@canary`
 
+[jetbrains-eap]: https://www.jetbrains.com/resources/eap/
 [homebrew-cask]: https://github.com/Homebrew/homebrew-cask
