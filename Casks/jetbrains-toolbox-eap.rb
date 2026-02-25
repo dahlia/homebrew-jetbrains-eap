@@ -1,4 +1,4 @@
-cask "toolbox-eap" do
+cask "jetbrains-toolbox-eap" do
   arch arm: "-arm64"
 
   version "3.2,3.2.0.65851"
@@ -25,7 +25,7 @@ cask "toolbox-eap" do
 
   auto_updates true
 
-  # The application name is consistent between versions
+  # The application path is often inconsistent between versions
   rename "JetBrains Toolbox*.app", "JetBrains Toolbox EAP.app"
 
   app "JetBrains Toolbox EAP.app"
