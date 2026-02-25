@@ -21,6 +21,7 @@ casks.
 - `clion-eap`
 - `datagrip-eap`
 - `dataspell-eap`
+- `gateway-eap`
 - `goland-eap`
 - `intellij-idea-eap`
 - `phpstorm-eap`
