@@ -1,11 +1,11 @@
 cask "jetbrains-gateway-eap" do
   arch arm: "-aarch64"
 
-  version "2026.1,261.21525.48"
-  sha256 intel: "0000000000000000000000000000000000000000000000000000000000000000",
-         arm:   "0000000000000000000000000000000000000000000000000000000000000000"
+  version "2026.1,261.21525.50"
+  sha256 intel: "d22d4b9c967a1989b600e391ae5d329eeec1ee636aa6b36e6489f2e3d3368534",
+         arm:   "2bd9fa63354272bbcbf5ac043f963d9cf14caeec9cb2e12b491b6d074c962f27"
 
-  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.first}#{arch}.dmg"
+  url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.second}#{arch}.dmg"
   name "JetBrains Gateway EAP"
   desc "Remote development gateway by JetBrains (EAP)"
   homepage "https://www.jetbrains.com/remote-development/gateway/nextversion/"
@@ -29,7 +29,7 @@ cask "jetbrains-gateway-eap" do
   rename "JetBrains Gateway*.app", "JetBrains Gateway EAP.app"
 
   app "JetBrains Gateway EAP.app"
-  binary "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway", target: "jetbrains-gateway-eap"
+  binary "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway", target: "gateway-eap"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/JetBrainsGateway#{version.csv.first}",
