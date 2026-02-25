@@ -24,12 +24,12 @@ casks.
 - `goland-eap`
 - `intellij-idea-eap`
 - `jetbrains-gateway-eap`
+- `jetbrains-toolbox-eap`
 - `phpstorm-eap`
 - `pycharm-eap`
 - `rider-eap`
 - `rubymine-eap`
 - `rustrover-eap`
-- `jetbrains-toolbox-eap`
 - `webstorm-eap`
 
 FYI, Android Studio has beta and canary channel instead of EAP, and casks for
