@@ -36,7 +36,7 @@ jobs:
         packages: ${{ fromJSON(needs.changed-packages.outputs.matrix) }}
         os: # https://docs.github.com/en/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories
           - macos-latest # Based on arm64.
-          - macos-15-intel # Based on x64.
+          - macos-26-intel # Based on x64.
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
