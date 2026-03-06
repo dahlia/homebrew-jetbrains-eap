@@ -1,9 +1,9 @@
 cask "pycharm-eap" do
   arch arm: "-aarch64"
 
-  version "2026.1,261.21849.34"
-  sha256 arm:   "c0b1711b0dc8cc647eec3e4f4fb9b58b6d1c92005546f4d8b6490cee390519de",
-         intel: "7294358b316ed51a96f602d9c9e5a3bdc87c9259ec21b626b169677159d45412"
+  version "2026.1,261.22158.41"
+  sha256 arm:   "5fcaeac065c817f8e4b1c45f65129d92b559d98be491caf2f75990cc5901c66b",
+         intel: "18cd4a37aa1b71485e41f21a4ba58a90b4b43bee013e8df4433311677b0d2747"
 
   url "https://download.jetbrains.com/python/pycharm-professional-#{version.csv.second}#{arch}.dmg"
   name "PyCharm EAP"
