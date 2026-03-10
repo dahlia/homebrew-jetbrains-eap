@@ -1,9 +1,9 @@
 cask "jetbrains-toolbox-eap" do
   arch arm: "-arm64"
 
-  version "3.3,3.3.0.73615"
-  sha256 arm:   "07e6d6e54b81697d64147d0abec5640f93e7f2856aeafb3a263da730d2a3526b",
-         intel: "81f897b28a65c76e27ef527bb48b9e18aa4b90ca26af398a6c9b480ce9c23a11"
+  version "3.4,3.4.0.76256"
+  sha256 arm:   "532fd359dd348ccd3b9fa0af086ec7e4acba0c105ae11b612802f96574ca72a1",
+         intel: "00fd78dcc5d160e479ca6a4b0614fa44633eecd39bf907aa5b136003a8c3f6e6"
 
   url "https://download.jetbrains.com/toolbox/jetbrains-toolbox-#{version.csv.second}#{arch}.dmg"
   name "JetBrains Toolbox EAP"
