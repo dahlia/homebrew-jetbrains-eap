@@ -1,9 +1,9 @@
 cask "jetbrains-gateway-eap" do
   arch arm: "-aarch64"
 
-  version "2026.1,261.21525.50"
-  sha256 arm:   "2bd9fa63354272bbcbf5ac043f963d9cf14caeec9cb2e12b491b6d074c962f27",
-         intel: "d22d4b9c967a1989b600e391ae5d329eeec1ee636aa6b36e6489f2e3d3368534"
+  version "2026.1,261.22158.152"
+  sha256 arm:   "0ab0eddd9ced2af162efc6236fedb80f49b9f0d62f7386abf967289b8192e45f",
+         intel: "c9d6bad5c1743fa82469a2cf06eb79d36959dca167379dd796b525f4f24cb4d5"
 
   url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.second}#{arch}.dmg"
   name "JetBrains Gateway EAP"
