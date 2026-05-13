@@ -1,9 +1,9 @@
 cask "datagrip-eap" do
   arch arm: "-aarch64"
 
-  version "2026.1,261.21849.37"
-  sha256 arm:   "f0bcafa426cee17fdc22b7c65c8dbb4ffe8339428c2dc53ce0c84f8dafee5cec",
-         intel: "674ded99720720db200ea733264fd0b37d190a7bde7234d2a9dec260a8525443"
+  version "2026.2,262.5752.1"
+  sha256 arm:   "98889fd21c7df9aee778564ef502d44edf6e2e5e1748837de56a82e6bbfe1456",
+         intel: "c287a9232c9ce0a19e395c81ad93db937d2a86826aa7bc0a9b5c8d8ef0d02905"
 
   url "https://download.jetbrains.com/datagrip/datagrip-#{version.csv.second}#{arch}.dmg"
   name "DataGrip EAP"
@@ -24,8 +24,9 @@ cask "datagrip-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "DataGrip*.app", "DataGrip EAP.app"
 
   app "DataGrip EAP.app"
