@@ -1,9 +1,9 @@
 cask "rubymine-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.42"
-  sha256 arm:   "ad65c33044413a23811939b827a526dcfa4359f1e4c3722ceef84cef90b25fd5",
-         intel: "56ecc5b4a46c31c29f6a8ba93705840ee99b609885385d205a97f208a2f3bff1"
+  version "2026.2,262.5752.24"
+  sha256 arm:   "2224e318e228133c98a7b77d5721c6f98b9f99fdc512a5f1ae34be4891d3c8cf",
+         intel: "05b5ffa9ad55ec2e55d6384244355bccf450aaa9541c02d84bfe620f62c5b55e"
 
   url "https://download.jetbrains.com/ruby/RubyMine-#{version.csv.second}#{arch}.dmg"
   name "RubyMine EAP"
@@ -24,8 +24,9 @@ cask "rubymine-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "RubyMine*.app", "RubyMine EAP.app"
 
   app "RubyMine EAP.app"
