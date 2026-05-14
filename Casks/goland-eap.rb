@@ -1,9 +1,9 @@
 cask "goland-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.49"
-  sha256 arm:   "e488d148cd3ca5716231a1959ae8046c223060db12720093cc720a23841076df",
-         intel: "21f0a3adba289cebf6f4c21ccf4aec4ab21559ff963d264e0e37411eb7bcf88e"
+  version "2026.2,262.5752.31"
+  sha256 arm:   "c54ac00fc4948e94381629dea313b9ec0c738df3e933445198a76b258f197197",
+         intel: "44ca3fb2bf22e65ab861ef5fae6388ff6affe597553a21e20b4aeea0eca44062"
 
   url "https://download.jetbrains.com/go/goland-#{version.csv.second}#{arch}.dmg"
   name "GoLand EAP"
@@ -24,8 +24,9 @@ cask "goland-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "GoLand*.app", "GoLand EAP.app"
 
   app "GoLand EAP.app"
