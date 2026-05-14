@@ -1,9 +1,9 @@
 cask "webstorm-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.53"
-  sha256 arm:   "4e13555228873e520c688332a46410f1804d02ab673c6930d00057f691841156",
-         intel: "b8bbbc29bcb75e710fd7e4aa77a193bb53e54cc30b0d4c19c73a84824277566a"
+  version "2026.2,262.5752.26"
+  sha256 arm:   "426f8a5ac38efdda2980695a76bc69d838c8814b497bdb5cb53c6e973ba701bb",
+         intel: "dda1c1043101a1756e30ca017cf9643812521a0a15741120bacdbefb34b7b205"
 
   url "https://download.jetbrains.com/webstorm/WebStorm-#{version.csv.second}#{arch}.dmg"
   name "WebStorm EAP"
@@ -24,8 +24,9 @@ cask "webstorm-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "WebStorm*.app", "WebStorm EAP.app"
 
   app "WebStorm EAP.app"
