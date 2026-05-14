@@ -1,9 +1,9 @@
 cask "rustrover-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.47"
-  sha256 arm:   "c20a7d82dd168c9f9ea0ed7046c13cc0263333f71d34864d6272b4a238229552",
-         intel: "408e4db0aa6abb0303a435c84ed6dd08d21cf3db2cea65871899432a7fc282ff"
+  version "2026.2,262.5752.29"
+  sha256 arm:   "897ad001b0689999d7a659e8dea76c7cfcbacd8805a0e7e0250154775eda38bb",
+         intel: "80ecbb915bfbbe82224b74a600b52bb32a92a82d27fffba065757e272430dad1"
 
   url "https://download.jetbrains.com/rustrover/RustRover-#{version.csv.second}#{arch}.dmg"
   name "RustRover EAP"
@@ -24,8 +24,9 @@ cask "rustrover-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "RustRover*.app", "RustRover EAP.app"
 
   app "RustRover EAP.app"
