@@ -1,9 +1,9 @@
 cask "pycharm-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.46"
-  sha256 arm:   "c73cd5c3b2fd5e46b3d0b45f0d1f81087e5c3e63de2cdfef1e2b6e65ded2622d",
-         intel: "0ffd8857e111aaa676c30ca6f3dc20de77e0ba8a948097b4e1acbc58d96e0876"
+  version "2026.2,262.5752.27"
+  sha256 arm:   "e0e75bea9e6eb3737d50f745808e06ea4f88ac201408fa638f8902c83487b088",
+         intel: "37246b57c78abdb5839e4b8d8b023a6086321a2f00efe48516e32c280eac1031"
 
   url "https://download.jetbrains.com/python/pycharm-professional-#{version.csv.second}#{arch}.dmg"
   name "PyCharm EAP"
@@ -25,8 +25,9 @@ cask "pycharm-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "PyCharm*.app", "PyCharm EAP.app"
 
   app "PyCharm EAP.app"
