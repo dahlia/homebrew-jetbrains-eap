@@ -1,9 +1,9 @@
 cask "rider-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2-EAP1,262.4852.69"
-  sha256 arm:   "5f2b2d169e98d08fc6d01b4599c39477d262de447dc323053f7512fed4d184e0",
-         intel: "5223b067b17563b170dcce04aa1ee81027a986cdcd5d25673564c339fa478e70"
+  version "2026.2-EAP2,262.5752.33"
+  sha256 arm:   "a20d8755d3c5ccb1d073c4ded55f395e14d2a50ced9a47398ecebc79e1faa055",
+         intel: "cfa9bf044748337644bc95f6dee3b21e9bba9c5144a4665588a5c1fb1765fa0b"
 
   url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
   name "JetBrains Rider EAP"
@@ -24,8 +24,9 @@ cask "rider-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "Rider*.app", "Rider EAP.app"
 
   app "Rider EAP.app"
