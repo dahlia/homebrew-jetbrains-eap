@@ -1,9 +1,9 @@
 cask "phpstorm-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.70"
-  sha256 arm:   "8dbf363b69db1f97f58683409b2d4741c27e66cc85257d0ff7e5b39f91156f78",
-         intel: "b7d03cf85e6fd371e253c077dd03f85204ae2c9445729b23f02aa02a2e50ba6e"
+  version "2026.2,262.5752.40"
+  sha256 arm:   "d831dad90f9be97a3f91b9340aadfe2c0456e06cfc8421d4c8c01afa253119d6",
+         intel: "084f05370a47d7e5c3458ea60719c6a3ce012702d0e2e993f221697255134ba5"
 
   url "https://download.jetbrains.com/webide/PhpStorm-#{version.csv.second}#{arch}.dmg"
   name "JetBrains PhpStorm EAP"
@@ -24,8 +24,9 @@ cask "phpstorm-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "PhpStorm*.app", "PhpStorm EAP.app"
 
   app "PhpStorm EAP.app"
