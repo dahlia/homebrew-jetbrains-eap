@@ -1,9 +1,9 @@
 cask "jetbrains-toolbox-eap" do
   arch arm: "-arm64"
 
-  version "3.4,3.4.0.76256"
-  sha256 arm:   "532fd359dd348ccd3b9fa0af086ec7e4acba0c105ae11b612802f96574ca72a1",
-         intel: "00fd78dcc5d160e479ca6a4b0614fa44633eecd39bf907aa5b136003a8c3f6e6"
+  version "3.5,3.5.0.84084"
+  sha256 arm:   "16638b38de697ea8a3f373c63357b3da09a14c52c9b09083e8ec242fcc9556f3",
+         intel: "8c1671d4ddd86ab8e603f68ac190cc6a075bb93ce1af8fadc9564589570e40c9"
 
   url "https://download.jetbrains.com/toolbox/jetbrains-toolbox-#{version.csv.second}#{arch}.dmg"
   name "JetBrains Toolbox EAP"
@@ -24,8 +24,9 @@ cask "jetbrains-toolbox-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "JetBrains Toolbox*.app", "JetBrains Toolbox EAP.app"
 
   app "JetBrains Toolbox EAP.app"
