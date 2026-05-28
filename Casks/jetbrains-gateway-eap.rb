@@ -1,9 +1,9 @@
 cask "jetbrains-gateway-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.4852.55"
-  sha256 arm:   "51999434d4f43e4c97b4aed0ed02ca81019f23848ff516ec66540e5a9cf93896",
-         intel: "a8a15da6a3e63cf765e33a2994955d8372efcbdab141dba7762c6972b7feedb2"
+  version "2026.2,262.6653.20"
+  sha256 arm:   "203e35c0bad14ce481fddb741af749b6a994c09748f2b6b5497197a39c37f063",
+         intel: "98fcc83ec404d50e7cd75e6067b0febfda937981e805132a01405437217b291a"
 
   url "https://download.jetbrains.com/idea/gateway/JetBrainsGateway-#{version.csv.second}#{arch}.dmg"
   name "JetBrains Gateway EAP"
@@ -24,8 +24,9 @@ cask "jetbrains-gateway-eap" do
   end
 
   auto_updates true
-
   # The application path is often inconsistent between versions
+  depends_on :macos
+
   rename "JetBrains Gateway*.app", "JetBrains Gateway EAP.app"
 
   app "JetBrains Gateway EAP.app"
