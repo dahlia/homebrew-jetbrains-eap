@@ -13,19 +13,6 @@ cask "dataspell-eap" do
   # https://blog.jetbrains.com/dataspell/2026/05/the-upcoming-sunset-of-dataspell/
   deprecate! date: "2026-05-28", because: :discontinued, replacement_cask: "pycharm-eap"
 
-  livecheck do
-    url "https://data.services.jetbrains.com/products/releases?code=DS&latest=true&type=eap"
-    strategy :json do |json|
-      json["DS"]&.map do |release|
-        version = release["version"]
-        build = release["build"]
-        next if version.blank? || build.blank?
-
-        "#{version},#{build}"
-      end
-    end
-  end
-
   auto_updates true
 
   # The application path is often inconsistent between versions
