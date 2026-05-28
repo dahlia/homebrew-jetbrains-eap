@@ -10,7 +10,7 @@ cask "dataspell-eap" do
   desc "IDE for Professional Data Scientists (EAP)"
   homepage "https://www.jetbrains.com/dataspell/nextversion/"
 
-   # https://blog.jetbrains.com/dataspell/2026/05/the-upcoming-sunset-of-dataspell/
+  # https://blog.jetbrains.com/dataspell/2026/05/the-upcoming-sunset-of-dataspell/
   deprecate! date: "2026-05-28", because: :discontinued, replacement_cask: "pycharm-eap"
 
   livecheck do
