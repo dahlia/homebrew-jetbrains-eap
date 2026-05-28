@@ -14,6 +14,7 @@ cask "dataspell-eap" do
   deprecate! date: "2026-05-28", because: :discontinued, replacement_cask: "pycharm-eap"
 
   auto_updates true
+  depends_on :macos
 
   # The application path is often inconsistent between versions
   rename "DataSpell*.app", "DataSpell EAP.app"
