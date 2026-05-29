@@ -24,9 +24,9 @@ cask "rider-eap" do
   end
 
   auto_updates true
-  # The application path is often inconsistent between versions
   depends_on :macos
 
+  # The application path is often inconsistent between versions
   rename "Rider*.app", "Rider EAP.app"
 
   app "Rider EAP.app"

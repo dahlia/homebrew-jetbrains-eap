@@ -24,9 +24,9 @@ cask "jetbrains-gateway-eap" do
   end
 
   auto_updates true
-  # The application path is often inconsistent between versions
   depends_on :macos
 
+  # The application path is often inconsistent between versions
   rename "JetBrains Gateway*.app", "JetBrains Gateway EAP.app"
 
   app "JetBrains Gateway EAP.app"

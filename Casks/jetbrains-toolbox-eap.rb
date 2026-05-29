@@ -24,9 +24,9 @@ cask "jetbrains-toolbox-eap" do
   end
 
   auto_updates true
-  # The application path is often inconsistent between versions
   depends_on :macos
 
+  # The application path is often inconsistent between versions
   rename "JetBrains Toolbox*.app", "JetBrains Toolbox EAP.app"
 
   app "JetBrains Toolbox EAP.app"
