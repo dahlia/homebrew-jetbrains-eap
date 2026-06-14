@@ -46,6 +46,7 @@ jobs:
           TAP_BASE=$(brew --taps)/${{ github.repository_owner }}
           mkdir -vp $TAP_BASE
           ln -vs $GITHUB_WORKSPACE $TAP_BASE/${{ github.event.repository.name }}
+          brew trust $GITHUB_REPOSITORY
       - name: Check Package
         run: |
           PACKAGE_NAME="$(basename "${{ matrix.packages }}" .rb)"
