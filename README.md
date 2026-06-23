@@ -20,7 +20,6 @@ casks.
 
 - `clion-eap`
 - `datagrip-eap`
-- `dataspell-eap`
 - `goland-eap`
 - `intellij-idea-eap`
 - `jetbrains-gateway-eap`
