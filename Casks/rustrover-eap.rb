@@ -1,9 +1,9 @@
 cask "rustrover-eap" do
   arch arm: "-aarch64"
 
-  version "2026.2,262.8665.139"
-  sha256 arm:   "e206af44cc83f2fc7fe452172627ed35582babd10945983780070092b1403b46",
-         intel: "d881750e4ba3d1f9d7e9e1b3df662d0364d604b3852a6e745e0b6e4ce17de430"
+  version "2026.3,263.3889.73"
+  sha256 arm:   "5e7f792fea5559ba27e4b78ed9c39f32520dc4bc871efaca1af9cc7b462bef16",
+         intel: "0c73045948ac77768e060ffa20dbe1d5af81259258f5e062a1337cbeb89f8cb7"
 
   url "https://download.jetbrains.com/rustrover/RustRover-#{version.csv.second}#{arch}.dmg"
   name "RustRover EAP"
