@@ -9,8 +9,12 @@ on:
 
 jobs:
   bump:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.event.repository.fork == false
+    # Job-level, so it also applies when called from `check.yml` via `workflow_call`.
+    concurrency:
+      group: bump
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v6
         with:

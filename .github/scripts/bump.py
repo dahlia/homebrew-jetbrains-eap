@@ -16,6 +16,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -34,13 +35,15 @@ class SkipError(Exception):
 
 
 def fetch(url: str) -> str:
+    req = urllib.request.Request(url, headers={"User-Agent": "homebrew-jetbrains-eap"})
     for attempt in range(3):
         try:
-            with urllib.request.urlopen(url, timeout=30) as response:
+            with urllib.request.urlopen(req, timeout=30) as response:
                 return response.read().decode()
         except OSError:
             if attempt == 2:
                 raise
+            time.sleep(attempt + 1)
     raise AssertionError("unreachable")
 
 
