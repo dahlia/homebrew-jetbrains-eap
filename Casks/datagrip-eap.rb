@@ -30,12 +30,10 @@ cask "datagrip-eap" do
   rename "DataGrip*.app", "DataGrip EAP.app"
 
   app "DataGrip EAP.app"
-  binary "#{appdir}/DataGrip EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
+  command_wrapper "datagrip-eap",
+                  executable: "#{appdir}/DataGrip EAP.app/Contents/MacOS/datagrip"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/datagrip", "{{HOMEBREW_PREFIX}}/bin/datagrip"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
+  uninstall quit: "com.jetbrains.datagrip-EAP"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/DataGrip#{version.csv.first}",

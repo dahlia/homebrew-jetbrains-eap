@@ -30,12 +30,10 @@ cask "intellij-idea-eap" do
   rename "IntelliJ IDEA*.app", "IntelliJ IDEA EAP.app"
 
   app "IntelliJ IDEA EAP.app"
-  binary "#{appdir}/IntelliJ IDEA EAP.app/Contents/MacOS/idea", target: "idea-eap"
+  command_wrapper "idea-eap",
+                  executable: "#{appdir}/IntelliJ IDEA EAP.app/Contents/MacOS/idea"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/idea", "{{HOMEBREW_PREFIX}}/bin/idea"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
+  uninstall quit: "com.jetbrains.intellij-EAP"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/IntelliJIdea#{version.csv.first}",

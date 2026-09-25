@@ -30,12 +30,10 @@ cask "clion-eap" do
   rename "CLion*.app", "CLion EAP.app"
 
   app "CLion EAP.app"
-  binary "#{appdir}/CLion EAP.app/Contents/MacOS/clion", target: "clion-eap"
+  command_wrapper "clion-eap",
+                  executable: "#{appdir}/CLion EAP.app/Contents/MacOS/clion"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/clion", "{{HOMEBREW_PREFIX}}/bin/clion"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
+  uninstall quit: "com.jetbrains.CLion-EAP"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/CLion#{version.csv.first}",

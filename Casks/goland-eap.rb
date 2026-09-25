@@ -30,12 +30,10 @@ cask "goland-eap" do
   rename "GoLand*.app", "GoLand EAP.app"
 
   app "GoLand EAP.app"
-  binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
+  command_wrapper "goland-eap",
+                  executable: "#{appdir}/GoLand EAP.app/Contents/MacOS/goland"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/goland", "{{HOMEBREW_PREFIX}}/bin/goland"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
+  uninstall quit: "com.jetbrains.goland-EAP"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/GoLand#{version.csv.first}",

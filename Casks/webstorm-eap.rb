@@ -30,12 +30,10 @@ cask "webstorm-eap" do
   rename "WebStorm*.app", "WebStorm EAP.app"
 
   app "WebStorm EAP.app"
-  binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
+  command_wrapper "webstorm-eap",
+                  executable: "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/wstorm", "{{HOMEBREW_PREFIX}}/bin/wstorm"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
+  uninstall quit: "com.jetbrains.WebStorm-EAP"
 
   zap trash: [
     "~/Library/Application Support/JetBrains/WebStorm#{version.csv.first}",
