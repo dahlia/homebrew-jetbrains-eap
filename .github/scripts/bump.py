@@ -140,6 +140,8 @@ def bump_cask(cask_file: str, base_ref: str) -> None:
 
 
 def main() -> int:
+    # Keep our output ordered with that of `gh` when stdout is not a TTY, as in CI.
+    sys.stdout.reconfigure(line_buffering=True)
     os.chdir(git("rev-parse", "--show-toplevel"))
     original_ref = git("rev-parse", "--abbrev-ref", "HEAD")
     if original_ref == "HEAD":
