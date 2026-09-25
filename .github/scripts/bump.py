@@ -20,7 +20,7 @@ import urllib.request
 from pathlib import Path
 
 DRY_RUN = bool(os.environ.get("DRY_RUN"))
-BASE_BRANCH = "g/bump-workflow"  # TODO: temporary for testing, revert before merging.
+BASE_BRANCH = "main"
 
 API_URL_RE = re.compile(r'https://data\.services\.jetbrains\.com/products/releases\?[^"]+')
 CODE_RE = re.compile(r'json\["([A-Z]+)"\]')
