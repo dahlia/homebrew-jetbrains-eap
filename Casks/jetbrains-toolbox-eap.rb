@@ -24,6 +24,7 @@ cask "jetbrains-toolbox-eap" do
   end
 
   auto_updates true
+  conflicts_with cask: "jetbrains-toolbox"
   depends_on :macos
 
   # The application path is often inconsistent between versions
@@ -32,6 +33,7 @@ cask "jetbrains-toolbox-eap" do
   app "JetBrains Toolbox EAP.app"
 
   uninstall launchctl: "com.jetbrains.toolbox",
+            quit:      "com.jetbrains.toolbox",
             signal:    ["TERM", "com.jetbrains.toolbox"]
 
   zap trash: [

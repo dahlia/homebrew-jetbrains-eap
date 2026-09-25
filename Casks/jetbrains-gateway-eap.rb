@@ -36,7 +36,7 @@ cask "jetbrains-gateway-eap" do
     "~/Library/Application Support/JetBrains/JetBrainsGateway#{version.csv.first}",
     "~/Library/Caches/JetBrains/JetBrainsGateway#{version.csv.first}",
     "~/Library/Logs/JetBrains/JetBrainsGateway#{version.csv.first}",
-    "~/Library/Preferences/com.jetbrains.gateway.plist",
-    "~/Library/Saved Application State/com.jetbrains.gateway.savedState",
+    "~/Library/Preferences/com.jetbrains.gateway-EAP.plist",
+    "~/Library/Saved Application State/com.jetbrains.gateway-EAP.savedState",
   ]
 end

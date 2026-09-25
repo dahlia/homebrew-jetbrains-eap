@@ -16,7 +16,8 @@ Casks
 -----
 
 Every cask in this tap ends with `-eap`. These can coexist with the non-EAP
-casks.
+casks, except `jetbrains-toolbox-eap`, which shares its bundle identifier and
+data with `jetbrains-toolbox`.
 
 - `clion-eap`
 - `datagrip-eap`

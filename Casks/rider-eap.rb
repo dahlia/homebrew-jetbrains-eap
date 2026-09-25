@@ -5,7 +5,7 @@ cask "rider-eap" do
   sha256 arm:   "af9d7e2b40fcd02bc259814e397580e966133bf77387f4ab579162ec1f632438",
          intel: "fc562df94ff67fde94aec00fe8a9926d82bbf8346c6e7021905bc7e76191a156"
 
-  url "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
+  url "https://download.jetbrains.com/rider/JetBrains.Rider-#{version.csv.first}-#{version.csv.second}.Checked#{arch}.dmg"
   name "JetBrains Rider EAP"
   desc ".NET IDE (EAP)"
   homepage "https://www.jetbrains.com/rider/nextversion/"
@@ -38,9 +38,9 @@ cask "rider-eap" do
   end
 
   zap trash: [
-    "~/Library/Application Support/JetBrains/Rider#{version.csv.first}",
-    "~/Library/Caches/JetBrains/Rider#{version.csv.first}",
-    "~/Library/Logs/JetBrains/Rider#{version.csv.first}",
+    "~/Library/Application Support/JetBrains/Rider#{version.csv.first.split("-").first}",
+    "~/Library/Caches/JetBrains/Rider#{version.csv.first.split("-").first}",
+    "~/Library/Logs/JetBrains/Rider#{version.csv.first.split("-").first}",
     "~/Library/Preferences/com.jetbrains.rider-EAP.plist",
     "~/Library/Saved Application State/com.jetbrains.rider-EAP.savedState",
   ]
