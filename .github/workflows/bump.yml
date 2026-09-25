@@ -9,17 +9,17 @@ on:
 
 jobs:
   bump:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     if: github.event.repository.fork == false
     steps:
       - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GH_TOKEN }} # A PAT for hong-bot which will trigger workflows run.
       - name: Set up Git
         run: |
           git config --global user.name 'HongBot'
           git config --global user.email '109153616+hong-bot@users.noreply.github.com'
-      - uses: Homebrew/actions/setup-homebrew@main
       - name: Bump packages
         env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }} # A PAT for hong-bot which will trigger workflows run.
-        run: |
-          brew bump --no-fork --open-pr --casks --tap=$GITHUB_REPOSITORY
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # A PAT for hong-bot which will trigger workflows run.
+        run: .github/scripts/bump.py
