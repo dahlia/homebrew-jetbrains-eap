@@ -30,7 +30,8 @@ cask "rider-eap" do
   rename "Rider*.app", "Rider EAP.app"
 
   app "Rider EAP.app"
-  binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"
+  command_wrapper "rider-eap",
+                  executable: "#{appdir}/Rider EAP.app/Contents/MacOS/rider"
 
   uninstall quit: "com.jetbrains.rider-EAP"
 

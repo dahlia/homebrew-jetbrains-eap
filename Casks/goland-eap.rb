@@ -30,7 +30,8 @@ cask "goland-eap" do
   rename "GoLand*.app", "GoLand EAP.app"
 
   app "GoLand EAP.app"
-  binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
+  command_wrapper "goland-eap",
+                  executable: "#{appdir}/GoLand EAP.app/Contents/MacOS/goland"
 
   uninstall quit: "com.jetbrains.goland-EAP"
 

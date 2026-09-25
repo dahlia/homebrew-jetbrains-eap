@@ -31,7 +31,8 @@ cask "pycharm-eap" do
   rename "PyCharm*.app", "PyCharm EAP.app"
 
   app "PyCharm EAP.app"
-  binary "#{appdir}/PyCharm EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
+  command_wrapper "pycharm-eap",
+                  executable: "#{appdir}/PyCharm EAP.app/Contents/MacOS/pycharm"
 
   uninstall quit: "com.jetbrains.pycharm-EAP"
 

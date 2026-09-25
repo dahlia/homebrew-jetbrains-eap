@@ -30,7 +30,8 @@ cask "jetbrains-gateway-eap" do
   rename "JetBrains Gateway*.app", "JetBrains Gateway EAP.app"
 
   app "JetBrains Gateway EAP.app"
-  binary "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway", target: "gateway-eap"
+  command_wrapper "gateway-eap",
+                  executable: "#{appdir}/JetBrains Gateway EAP.app/Contents/MacOS/gateway"
 
   uninstall quit: "com.jetbrains.gateway-EAP"
 

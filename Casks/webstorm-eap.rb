@@ -30,7 +30,8 @@ cask "webstorm-eap" do
   rename "WebStorm*.app", "WebStorm EAP.app"
 
   app "WebStorm EAP.app"
-  binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
+  command_wrapper "webstorm-eap",
+                  executable: "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm"
 
   uninstall quit: "com.jetbrains.WebStorm-EAP"
 

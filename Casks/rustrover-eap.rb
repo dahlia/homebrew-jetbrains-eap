@@ -30,7 +30,8 @@ cask "rustrover-eap" do
   rename "RustRover*.app", "RustRover EAP.app"
 
   app "RustRover EAP.app"
-  binary "#{appdir}/RustRover EAP.app/Contents/MacOS/rustrover", target: "rustrover-eap"
+  command_wrapper "rustrover-eap",
+                  executable: "#{appdir}/RustRover EAP.app/Contents/MacOS/rustrover"
 
   uninstall quit: "com.jetbrains.RustRover-EAP"
 

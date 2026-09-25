@@ -30,7 +30,8 @@ cask "phpstorm-eap" do
   rename "PhpStorm*.app", "PhpStorm EAP.app"
 
   app "PhpStorm EAP.app"
-  binary "#{appdir}/PhpStorm EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"
+  command_wrapper "phpstorm-eap",
+                  executable: "#{appdir}/PhpStorm EAP.app/Contents/MacOS/phpstorm"
 
   uninstall quit: "com.jetbrains.PhpStorm-EAP"
 

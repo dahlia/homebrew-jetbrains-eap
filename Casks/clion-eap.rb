@@ -30,7 +30,8 @@ cask "clion-eap" do
   rename "CLion*.app", "CLion EAP.app"
 
   app "CLion EAP.app"
-  binary "#{appdir}/CLion EAP.app/Contents/MacOS/clion", target: "clion-eap"
+  command_wrapper "clion-eap",
+                  executable: "#{appdir}/CLion EAP.app/Contents/MacOS/clion"
 
   uninstall quit: "com.jetbrains.CLion-EAP"
 

@@ -30,7 +30,8 @@ cask "rubymine-eap" do
   rename "RubyMine*.app", "RubyMine EAP.app"
 
   app "RubyMine EAP.app"
-  binary "#{appdir}/RubyMine EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
+  command_wrapper "rubymine-eap",
+                  executable: "#{appdir}/RubyMine EAP.app/Contents/MacOS/rubymine"
 
   uninstall quit: "com.jetbrains.RubyMine-EAP"
 

@@ -30,7 +30,8 @@ cask "intellij-idea-eap" do
   rename "IntelliJ IDEA*.app", "IntelliJ IDEA EAP.app"
 
   app "IntelliJ IDEA EAP.app"
-  binary "#{appdir}/IntelliJ IDEA EAP.app/Contents/MacOS/idea", target: "idea-eap"
+  command_wrapper "idea-eap",
+                  executable: "#{appdir}/IntelliJ IDEA EAP.app/Contents/MacOS/idea"
 
   uninstall quit: "com.jetbrains.intellij-EAP"
 
