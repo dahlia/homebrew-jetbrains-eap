@@ -32,13 +32,9 @@ cask "rubymine-eap" do
   app "RubyMine EAP.app"
   binary "#{appdir}/RubyMine EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "mine") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/mine", "{{HOMEBREW_PREFIX}}/bin/mine"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [

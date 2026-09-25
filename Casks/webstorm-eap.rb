@@ -32,13 +32,9 @@ cask "webstorm-eap" do
   app "WebStorm EAP.app"
   binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "wstorm") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/wstorm", "{{HOMEBREW_PREFIX}}/bin/wstorm"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [

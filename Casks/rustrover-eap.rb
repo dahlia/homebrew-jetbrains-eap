@@ -32,13 +32,9 @@ cask "rustrover-eap" do
   app "RustRover EAP.app"
   binary "#{appdir}/RustRover EAP.app/Contents/MacOS/rustrover", target: "rustrover-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "rustrover") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/rustrover", "{{HOMEBREW_PREFIX}}/bin/rustrover"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [
