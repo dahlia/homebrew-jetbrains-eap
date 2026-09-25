@@ -32,6 +32,8 @@ cask "goland-eap" do
   app "GoLand EAP.app"
   binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
 
+  uninstall quit: "com.jetbrains.goland-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/GoLand#{version.csv.first}",
     "~/Library/Caches/JetBrains/GoLand#{version.csv.first}",

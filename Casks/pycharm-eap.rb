@@ -33,6 +33,8 @@ cask "pycharm-eap" do
   app "PyCharm EAP.app"
   binary "#{appdir}/PyCharm EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
 
+  uninstall quit: "com.jetbrains.pycharm-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/PyCharm#{version.csv.first}",
     "~/Library/Caches/JetBrains/PyCharm#{version.csv.first}",

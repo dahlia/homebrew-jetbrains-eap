@@ -32,6 +32,8 @@ cask "clion-eap" do
   app "CLion EAP.app"
   binary "#{appdir}/CLion EAP.app/Contents/MacOS/clion", target: "clion-eap"
 
+  uninstall quit: "com.jetbrains.CLion-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/CLion#{version.csv.first}",
     "~/Library/Caches/JetBrains/CLion#{version.csv.first}",

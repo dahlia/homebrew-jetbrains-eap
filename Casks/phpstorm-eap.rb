@@ -32,6 +32,8 @@ cask "phpstorm-eap" do
   app "PhpStorm EAP.app"
   binary "#{appdir}/PhpStorm EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"
 
+  uninstall quit: "com.jetbrains.PhpStorm-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/PhpStorm#{version.csv.first}",
     "~/Library/Caches/JetBrains/PhpStorm#{version.csv.first}",

@@ -32,6 +32,8 @@ cask "datagrip-eap" do
   app "DataGrip EAP.app"
   binary "#{appdir}/DataGrip EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
 
+  uninstall quit: "com.jetbrains.datagrip-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/DataGrip#{version.csv.first}",
     "~/Library/Caches/JetBrains/DataGrip#{version.csv.first}",

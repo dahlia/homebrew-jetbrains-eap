@@ -32,6 +32,8 @@ cask "rustrover-eap" do
   app "RustRover EAP.app"
   binary "#{appdir}/RustRover EAP.app/Contents/MacOS/rustrover", target: "rustrover-eap"
 
+  uninstall quit: "com.jetbrains.RustRover-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/RustRover#{version.csv.first}",
     "~/Library/Caches/JetBrains/RustRover#{version.csv.first}",

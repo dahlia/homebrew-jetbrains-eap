@@ -32,6 +32,8 @@ cask "intellij-idea-eap" do
   app "IntelliJ IDEA EAP.app"
   binary "#{appdir}/IntelliJ IDEA EAP.app/Contents/MacOS/idea", target: "idea-eap"
 
+  uninstall quit: "com.jetbrains.intellij-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/IntelliJIdea#{version.csv.first}",
     "~/Library/Caches/JetBrains/IntelliJIdea#{version.csv.first}",

@@ -32,6 +32,8 @@ cask "webstorm-eap" do
   app "WebStorm EAP.app"
   binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
 
+  uninstall quit: "com.jetbrains.WebStorm-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/WebStorm#{version.csv.first}",
     "~/Library/Caches/JetBrains/WebStorm#{version.csv.first}",

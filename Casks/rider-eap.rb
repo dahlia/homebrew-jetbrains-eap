@@ -32,6 +32,8 @@ cask "rider-eap" do
   app "Rider EAP.app"
   binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"
 
+  uninstall quit: "com.jetbrains.rider-EAP"
+
   zap trash: [
     "~/Library/Application Support/JetBrains/Rider#{version.csv.first.split("-").first}",
     "~/Library/Caches/JetBrains/Rider#{version.csv.first.split("-").first}",
