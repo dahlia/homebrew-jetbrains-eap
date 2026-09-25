@@ -32,13 +32,9 @@ cask "phpstorm-eap" do
   app "PhpStorm EAP.app"
   binary "#{appdir}/PhpStorm EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "pstorm") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/pstorm", "{{HOMEBREW_PREFIX}}/bin/pstorm"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [

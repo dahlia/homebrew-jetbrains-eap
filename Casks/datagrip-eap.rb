@@ -32,13 +32,9 @@ cask "datagrip-eap" do
   app "DataGrip EAP.app"
   binary "#{appdir}/DataGrip EAP.app/Contents/MacOS/datagrip", target: "datagrip-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "datagrip") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/datagrip", "{{HOMEBREW_PREFIX}}/bin/datagrip"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [

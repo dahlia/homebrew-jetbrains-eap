@@ -32,13 +32,9 @@ cask "goland-eap" do
   app "GoLand EAP.app"
   binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
 
-  uninstall_postflight do
-    ENV["PATH"].split(File::PATH_SEPARATOR).map { |path| File.join(path, "goland") }.each do |path|
-      if File.readable?(path) &&
-         File.readlines(path).grep(/# see com.intellij.idea.SocketLock for the server side of this interface/).any?
-        File.delete(path)
-      end
-    end
+  uninstall_postflight_steps do
+    remove ["/usr/local/bin/goland", "{{HOMEBREW_PREFIX}}/bin/goland"],
+           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
   end
 
   zap trash: [
