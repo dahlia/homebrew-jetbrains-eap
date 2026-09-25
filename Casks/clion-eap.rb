@@ -32,11 +32,6 @@ cask "clion-eap" do
   app "CLion EAP.app"
   binary "#{appdir}/CLion EAP.app/Contents/MacOS/clion", target: "clion-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/clion", "{{HOMEBREW_PREFIX}}/bin/clion"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/CLion#{version.csv.first}",
     "~/Library/Caches/JetBrains/CLion#{version.csv.first}",

@@ -32,11 +32,6 @@ cask "webstorm-eap" do
   app "WebStorm EAP.app"
   binary "#{appdir}/WebStorm EAP.app/Contents/MacOS/webstorm", target: "webstorm-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/wstorm", "{{HOMEBREW_PREFIX}}/bin/wstorm"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/WebStorm#{version.csv.first}",
     "~/Library/Caches/JetBrains/WebStorm#{version.csv.first}",

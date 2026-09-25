@@ -32,11 +32,6 @@ cask "rubymine-eap" do
   app "RubyMine EAP.app"
   binary "#{appdir}/RubyMine EAP.app/Contents/MacOS/rubymine", target: "rubymine-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/mine", "{{HOMEBREW_PREFIX}}/bin/mine"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/RubyMine#{version.csv.first}",
     "~/Library/Caches/JetBrains/RubyMine#{version.csv.first}",

@@ -32,11 +32,6 @@ cask "rider-eap" do
   app "Rider EAP.app"
   binary "#{appdir}/Rider EAP.app/Contents/MacOS/rider", target: "rider-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/rider", "{{HOMEBREW_PREFIX}}/bin/rider"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/Rider#{version.csv.first.split("-").first}",
     "~/Library/Caches/JetBrains/Rider#{version.csv.first.split("-").first}",

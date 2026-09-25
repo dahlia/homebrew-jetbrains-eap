@@ -32,11 +32,6 @@ cask "goland-eap" do
   app "GoLand EAP.app"
   binary "#{appdir}/GoLand EAP.app/Contents/MacOS/goland", target: "goland-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/goland", "{{HOMEBREW_PREFIX}}/bin/goland"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/GoLand#{version.csv.first}",
     "~/Library/Caches/JetBrains/GoLand#{version.csv.first}",

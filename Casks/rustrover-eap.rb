@@ -32,11 +32,6 @@ cask "rustrover-eap" do
   app "RustRover EAP.app"
   binary "#{appdir}/RustRover EAP.app/Contents/MacOS/rustrover", target: "rustrover-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/rustrover", "{{HOMEBREW_PREFIX}}/bin/rustrover"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/RustRover#{version.csv.first}",
     "~/Library/Caches/JetBrains/RustRover#{version.csv.first}",

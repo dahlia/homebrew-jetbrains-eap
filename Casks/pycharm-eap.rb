@@ -33,11 +33,6 @@ cask "pycharm-eap" do
   app "PyCharm EAP.app"
   binary "#{appdir}/PyCharm EAP.app/Contents/MacOS/pycharm", target: "pycharm-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/charm", "{{HOMEBREW_PREFIX}}/bin/charm"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/PyCharm#{version.csv.first}",
     "~/Library/Caches/JetBrains/PyCharm#{version.csv.first}",

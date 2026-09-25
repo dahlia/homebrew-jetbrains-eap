@@ -32,11 +32,6 @@ cask "phpstorm-eap" do
   app "PhpStorm EAP.app"
   binary "#{appdir}/PhpStorm EAP.app/Contents/MacOS/phpstorm", target: "phpstorm-eap"
 
-  uninstall_postflight_steps do
-    remove ["/usr/local/bin/pstorm", "{{HOMEBREW_PREFIX}}/bin/pstorm"],
-           content_contains: "# see com.intellij.idea.SocketLock for the server side of this interface"
-  end
-
   zap trash: [
     "~/Library/Application Support/JetBrains/PhpStorm#{version.csv.first}",
     "~/Library/Caches/JetBrains/PhpStorm#{version.csv.first}",
