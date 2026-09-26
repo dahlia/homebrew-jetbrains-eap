@@ -141,6 +141,12 @@ def bump_cask(cask_file: str, base_ref: str) -> None:
             check=True,
         )
 
+    # Enabled with `GITHUB_TOKEN` rather than the PAT, so the eventual merge into main doesn't trigger workflows.
+    merge_env = dict(os.environ)
+    if "GITHUB_TOKEN" in os.environ:
+        merge_env["GH_TOKEN"] = os.environ["GITHUB_TOKEN"]
+    subprocess.run(["gh", "pr", "merge", branch, "--auto", "--rebase"], check=True, env=merge_env)
+
 
 def main() -> int:
     # Keep our output ordered with that of `gh` when stdout is not a TTY, as in CI.

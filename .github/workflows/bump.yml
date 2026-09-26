@@ -11,6 +11,10 @@ jobs:
   bump:
     runs-on: ubuntu-slim
     if: github.event.repository.fork == false
+    # For `GITHUB_TOKEN` to enable auto-merge; pushing and opening PRs use the PAT.
+    permissions:
+      contents: write
+      pull-requests: write
     # Job-level, so it also applies when called from `check.yml` via `workflow_call`.
     concurrency:
       group: bump
@@ -26,4 +30,5 @@ jobs:
       - name: Bump packages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }} # A PAT for hong-bot which will trigger workflows run.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used to enable auto-merge, which will not trigger workflows run when merged.
         run: .github/scripts/bump.py
