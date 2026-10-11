@@ -1,6 +1,9 @@
 name: Bump
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Run every hour.
     - cron: "0 * * * *"
